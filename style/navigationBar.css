@@ -1,0 +1,62 @@
+header {
+    background: black;
+    color: white;
+    padding: 20px;
+}
+
+.title {
+    float: right;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    font: 40px;
+    margin-left: 20px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.logo {
+    float: left;
+}
+
+nav li {
+    float: left;
+    margin-left: 20px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+li a:hover {
+    background-color: rgb(92, 86, 86);
+}
+
+.active
+{
+    border-radius: 4px;
+    background-color: rgb(92, 86, 86);
+}
+
+.rightPart {
+    float: right;
+}
+
+.signIn
+{
+    border-radius: 20px;
+    background-color: rgb(60, 145, 60);
+}
+
+.signIn:hover {
+    background-color: green;
+}

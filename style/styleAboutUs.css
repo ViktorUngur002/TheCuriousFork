@@ -1,0 +1,30 @@
+/*ABOUT US SECTION BEGINNING*/
+
+.restaurantInfo {
+    color: white;
+}
+
+.photoContainer {
+    overflow: hidden;
+}
+
+.photoContainer img{
+    width: 100%;
+}
+
+.textAboutUs h1 {
+    position: relative;
+    text-align: center;
+    font-size: 4em;
+    margin-bottom: 1%;
+    margin-top: 3%;
+}
+
+.textAboutUs p {
+    position: relative;
+    text-align: center;
+    max-width: 40%;
+    margin: 0 auto;
+}
+
+/*ABOUT US SECTION END*/

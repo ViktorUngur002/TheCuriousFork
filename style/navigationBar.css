@@ -92,6 +92,10 @@ a:hover {
     background-color: rgb(92, 86, 86);
 }
 
+.dropdown-content .active {
+    background-color: rgb(92, 86, 86);
+}
+
 .signIn
 {
     border-radius: 20px;

@@ -4,12 +4,12 @@
     color: white;
 }
 
-.photoContainer {
-    overflow: hidden;
-}
-
 .photoContainer img{
     width: 100%;
+}
+
+.textAboutUs {
+    margin-bottom: 3%;
 }
 
 .textAboutUs h1 {
@@ -25,6 +25,108 @@
     text-align: center;
     max-width: 40%;
     margin: 0 auto;
+    margin-bottom: 2%;
 }
 
+.photoRow {
+    margin: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.photo {
+    flex: 1;
+    overflow: hidden;
+    margin-left: 2%;
+}
+
+.photo img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5%;
+}
+
+@media  screen and (max-width: 915px) {
+    .textAboutUs p {
+        max-width: 70%;
+    }
+}
+
+@media  screen and (max-width: 649px) {
+    
+    .textAboutUs h1 {
+        font-size: 3em;
+    }
+    
+    .textAboutUs p {
+        max-width: 70%;
+    }
+}
+
+
 /*ABOUT US SECTION END*/
+
+hr {
+    width:90%;
+    text-align:center;
+    height: 2px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, rgb(182, 154, 27)));
+    border: none;
+}
+
+/*OUR TEAM SECTION BEGINNING*/
+
+.employees {
+    color: white;
+}
+
+.employees h1 {
+    font-size: 4em;
+    margin-left: 3%;
+}
+
+.container {
+    display: flex;
+    
+    margin-bottom: 5%;
+}
+
+.leftSection {
+    flex: 1;
+}
+
+.leftSection img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 5%;
+    border-radius: 5%;
+}
+
+.rightSection {
+    flex: 2;
+}
+
+.rightSection h1 {
+    margin-top: 0;
+    margin-left: 10%;
+    font-size: 3em;
+}
+
+.rightSection p {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 5%;
+    font-size: 1.2em;
+}
+
+@media  screen and (max-width: 915px) {
+    .rightSection h1 {
+        font-size: 2em;
+    }
+
+    .rightSection p {
+        font-size: 1.1em;
+    }
+}
+
+/*OUR TEAM SECTION END*/

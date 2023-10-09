@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style/navigationBar.css">
+    <link rel="stylesheet" type="text/css" href="../style/styleSignUp.css">
+    <link rel="stylesheet" type="text/css" href="../style/footer.css">
+    <link rel="stylesheet" type="text/css" href="../style/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
+    <title>The Curious Fork</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../images/logo.jpg" alt="">
+                <h1 class="title">The Curious Fork</h1>
+            </div>
+            <div>
+                <a class="signIn" href="signin.html">Sign in</a>
+                <a><i class="fa fa-shopping-cart" style="font-size:24px"></a></i>
+                <a href="aboutus.html">About Us</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="entrees.html">Entrees</a>
+                        <a href="maincourse.html">Main Course</a>
+                        <a href="desserts.html">Desserts</a>
+                    </div>
+                </div>
+                <a href="homepage.html">Home</a>
+            
+            </div>
+        </nav>
+    </header>
+
+   <section class="registration">
+    <div class="container">
+        <h1>Join Our Family</h1>
+        <form action="#" class="registrationForm">
+            <div class="inputBox">
+                <label for="">Full Name</label>
+                <input type="text" placeholder="Enter full name" required/>
+            </div>
+
+            <div class="inputBox">
+                <label for="">Email</label>
+                <input type="text" placeholder="Enter email address" required/>
+            </div>
+
+            <div class="column">
+                <div class="inputBox">
+                    <label for="">Password</label>
+                    <input type="text" placeholder="Enter password" required/>
+                </div>
+
+                <div class="inputBox">
+                    <label for="">Confirm Password</label>
+                    <input type="text" placeholder="Enter password" required/>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="inputBox">
+                    <label for="">Phone Number</label>
+                    <input type="text" placeholder="Enter phone number" required/>
+                </div>
+
+                <div class="inputBox">
+                    <label for="">Birth Date</label>
+                    <input id="birthDate" type="date" placeholder="Enter birth date" required/>
+                </div>
+            </div>
+
+            <div class="genderBox">
+                <h3>Gender</h3>
+                <div class="genderOption">
+                    <div class="gender">
+                        <input type="radio" id="checkMale" name="gender" checked/>
+                        <label for="checkMale">Male</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="checkFemale" name="gender" />
+                        <label for="checkFemale">Female</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="inputBox">
+                    <label for="">Address</label>
+                    <input type="text" placeholder="Enter address" required/>
+                </div>
+
+                <div class="inputBox">
+                    <label for="">No.</label>
+                    <input type="text" placeholder="Enter number" required/>
+                </div>
+            </div>
+
+            <div class="rowButton">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>     
+    </div>
+   </section>
+
+    <footer>
+        <div class="footerContact">
+            <h2>Contact:</h2>
+            <ul>
+                <li>Tel: (959) 411-4954</li>
+                <li>Mobile phone: (959) 867-1917</li>
+                <li>Address: 72 Morris Street, New York, NY 10016</li>
+                <li>e-mail: info@curious.fork.com</li>
+            </ul>
+        </div>
+
+        <div class="company">
+            <h2>Copyright &copy; 2023, The Curious Fork. All rights reserved</h2>
+        </div>
+    </footer>
+</body>
+</html>

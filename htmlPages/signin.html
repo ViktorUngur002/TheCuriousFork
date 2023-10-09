@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/navigationBar.css">
+    <link rel="stylesheet" type="text/css" href="../style/styleSignIn.css">
     <link rel="stylesheet" type="text/css" href="../style/footer.css">
     <link rel="stylesheet" type="text/css" href="../style/body.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <title>The Curious Fork</title>
 </head>
 <body>
@@ -38,7 +40,35 @@
         </nav>
     </header>
 
-   <section></section>
+   <section class="mainSection">
+        <div class="container">
+            <div class="wrapper">
+                <div class="titleSignIn">
+                    <h1>Welcome to The Curious Fork</h1>
+                </div>
+
+                <form action="#">
+                    <div class="row">
+                        <i class="fas fa-user"></i>
+                        <input type="email" placeholder="Username" required>
+                    </div>
+
+                    <div class="row">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="rowButton">
+                        <input type="submit" value="Sign In">
+                    </div>
+
+                    <div class="alternativeSingUp">
+                        <p>Not a member? <a href="singup.html">Sing Up</a></p>
+                    </div> 
+                </form>
+            </div>         
+        </div>
+   </section>
 
     <footer>
         <div class="footerContact">

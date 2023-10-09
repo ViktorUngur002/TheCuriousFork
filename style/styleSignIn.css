@@ -1,0 +1,121 @@
+.mainSection {
+    padding: 0;
+}
+
+.container {
+    max-width: 90%;
+    max-height: 90%;
+    padding: 0 20%;
+    margin: 15% auto;   
+}
+
+.wrapper {
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .titleSignIn {
+    height: 20%;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleSignIn h1 {
+    text-align: center;
+    margin-left: 2%;
+}
+
+.wrapper form {
+    padding: 5% 3% 3% 3%;
+}
+
+.wrapper form .row {
+    height: 15%;
+    margin-bottom: 3%;
+    position: relative;
+}
+
+.wrapper form .row input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 5%;
+    border-radius: 5px;
+    height: 50px;
+    border: 1px solid lightgray;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+
+form .row input:focus {
+    border-color: #16a085;
+    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+}
+
+form .row input::placeholder {
+    color: #999;
+}
+
+.wrapper form .row i {
+    position: absolute;
+    width: 5%;
+    height: 100%;
+    color: black;
+    font-size: 1em;
+    background: #16a085;
+    border: 1px solid #16a085;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper form .rowButton input {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-left: 0;
+    background: #16a085;
+    border: 1px solid #16a085;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form .rowButton input:hover{
+    background: #12876f;
+}
+
+.wrapper form .alternativeSingUp {
+    text-align: center;
+    margin-top: 2%;
+    font-size: 1.2em;
+}
+
+.wrapper form .alternativeSingUp a {
+    color: #16a085;
+     text-decoration: none;
+}
+
+form .alternativeSingUp a:hover{
+    background-color: white;
+    text-decoration: underline;
+}
+
+@media  screen and (max-width: 751px) {
+    
+    .container {
+        max-width: 95%;
+        max-height: 95%;
+        padding: 0 20%;
+        margin: 20% auto;   
+    }
+    
+    .wrapper .titleSignIn {
+        font-size: 1.5em;
+    }
+}

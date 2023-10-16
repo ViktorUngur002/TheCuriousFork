@@ -15,6 +15,8 @@
     <title>The Curious Fork</title>
 </head>
 <body>
+
+   
     <header>
         <nav class="navbar">
             <div class="logo">
@@ -23,7 +25,31 @@
             </div>
             <div>
                 <a class="signIn" href="signin.html">Sign in</a>
-                <a><i class="fa fa-shopping-cart" style="font-size:24px"></a></i>
+                <div class="shopping">
+                    <a id="cart-icon">
+                        <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+                        <span class="quantity">0</span>
+                    </a>
+                </div>
+                <div class="cart">
+                    <h2 class="cart-title">Your Cart</h2>
+    
+                    <!-- CONTENT  -->
+                    <div class="cart-content">
+    
+    
+                    </div>
+    
+                    <!-- TOTAL   -->
+                    <div class="total">
+                        <div class="total-title">Total</div>
+                        <div class="total-price">$0</div>
+                    </div>
+                    <!-- BUY BUTTON  -->
+                    <button type="button" class="btn-buy">Buy Now</button>
+                    <!-- CART CLOSE  -->
+                    <i class='bx bx-x' id="cart-close"></i>
+                </div>
                 <a href="aboutus.html">About Us</a>
                 <div class="dropdown">
                     <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
@@ -38,6 +64,8 @@
             </div>
         </nav>
     </header>
+
+    
 
     <div class="titleWrapper">
         <h1 class="welcomeTitle">Welcome To Our Main Course Menu</h1>
@@ -229,5 +257,7 @@
             <h2>Copyright &copy; 2023, The Curious Fork. All rights reserved</h2>
         </div>
     </footer>
+
+    <script src="../javascript/cartScript.js"></script>
 </body>
 </html>

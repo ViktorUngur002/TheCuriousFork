@@ -1,0 +1,123 @@
+header {
+    background: black;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.title {
+    float: right;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    font: 5em;
+    margin-left: 20px;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.logo {
+    float: left;
+}
+
+.navbar a{
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0 0 0 20px;
+    border-radius: 4px;
+}
+
+.dropbtn:hover {
+    background-color: rgb(92, 86, 86);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    border-radius: 0;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+.dropdown-content a:hover {
+    background-color:  rgb(92, 86, 86);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+a:hover {
+    background-color: rgb(92, 86, 86);
+}
+
+.active
+{
+    border-radius: 4px;
+    background-color: rgb(92, 86, 86);
+}
+
+.dropdown-content .active {
+    background-color: rgb(92, 86, 86);
+}
+
+.signIn
+{
+    border-radius: 20px;
+    background-color: rgb(60, 145, 60);
+}
+
+.signIn:hover {
+    background-color: green;
+}
+
+@media  screen and (max-width: 915px) {
+    .title {
+        display: none;
+    }
+}
+
+@media  screen and (max-width: 649px) {
+    .navbar a {
+        font-size: 0.9em;
+    }
+
+    .dropdown .dropbtn  {
+        font-size: 0.9em;
+    }
+}

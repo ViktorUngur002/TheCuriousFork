@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleSignIn.css">
+    <link rel="stylesheet" type="text/css" href="/style/footer.css">
+    <link rel="stylesheet" type="text/css" href="/style/body.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <title>The Curious Fork</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/images/logo.jpg" alt="">
+                <h1 class="title">The Curious Fork</h1>
+            </div>
+            <div>
+                <a class="signIn" href="signin.html">Sign in</a>
+                <a><i class="fa fa-shopping-cart" style="font-size:24px"></a></i>
+                <a href="aboutus.html">About Us</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="salads.html">Salads</a>
+                        <a href="maincourse.html">Main Course</a>
+                        <a href="desserts.html">Desserts</a>
+                    </div>
+                </div>
+                <a href="homepage.html">Home</a>
+            
+            </div>
+        </nav>
+    </header>
+
+   <section class="mainSection">
+        <div class="container">
+            <div class="wrapper">
+                <div class="titleSignIn">
+                    <h1>Welcome to The Curious Fork</h1>
+                </div>
+
+                <form action="/signin" method="POST" id="signInForm">
+                    <div class="credentials">
+                        <div class="row">
+                            <i class="fas fa-user"></i>
+                            <input type="email" placeholder="Email" name="email">
+                        </div>
+                    </div>
+
+                    <div class="credentials">
+                        <div class="row">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" name="password">
+                        </div>
+                    </div>
+
+                    <div class="rowButton">
+                        <input type="submit" name="signInButton" value="Sign In">
+                    </div>
+
+                    <div class="alternativeSingUp">
+                        <p>Not a member? <a href="signup.html">Sing Up</a></p>
+                    </div> 
+                </form>
+            </div>         
+        </div>
+   </section>
+
+    <footer>
+        <div class="footerContact">
+            <h2>Contact:</h2>
+            <ul>
+                <li>Tel: (959) 411-4954</li>
+                <li>Mobile phone: (959) 867-1917</li>
+                <li>Address: 72 Morris Street, New York, NY 10016</li>
+                <li>e-mail: info@curious.fork.com</li>
+            </ul>
+        </div>
+
+        <div class="company">
+            <h2>Copyright &copy; 2023, The Curious Fork. All rights reserved</h2>
+        </div>
+    </footer>
+
+    <script src="/javascript/signInDataCollectScript.js"></script>
+</body>
+</html>

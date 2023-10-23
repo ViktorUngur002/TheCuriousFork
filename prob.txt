@@ -1,0 +1,59 @@
+/*function checkAuthentication() {
+    const token = getCookie("token");
+
+    if(token) {
+        const signInButton = document.querySelector(".signIn");
+        if(signInButton) {
+            console.log("Hello");
+            signInButton.style.display = "none";
+        }
+
+        //profile page link
+    }
+}
+
+function getCookie(name) {
+
+    fetch('/signin')
+        .then(response => {
+            return response.text(); // This extracts the text content (including cookies) from the response.
+        })
+        .then(data => {
+            //console.log(document.cookie); // This won't contain cookies set by the server.
+            const cookies = data.split("; "); // Split the cookies from the response.
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split("=");
+                const trimmedCookieName = cookieName.trim();
+                console.log(trimmedCookieName);
+                console.log(cookieValue);
+                if (trimmedCookieName === name) {
+                    return cookieValue;
+                }
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    return null;
+}*/
+
+function checkAuthentication() {
+    fetch('/signin')
+        //.then(response => response.json())
+        .then(data => {
+            if (data.isAuthenticated) {
+                // The user is authenticated.
+                const signInButton = document.querySelector(".signIn");
+                if (signInButton) {
+                    signInButton.style.display = "none";
+                }
+                // Add code for logged-in user behavior here.
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+window.addEventListener("load", checkAuthentication);

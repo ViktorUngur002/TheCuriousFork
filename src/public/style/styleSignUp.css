@@ -1,0 +1,139 @@
+.registration {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8%;
+}
+
+.container {
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    background-color: white;
+    padding: 2%;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 9%;
+}
+
+.errorMessage {
+    color: red;
+    font-size: .8em;
+    margin-top: 1%;
+}
+
+.errorMessageExists {
+    color: red;
+    font-size: 1.2em;
+    margin-top: 1%;
+    text-align: center;
+}
+
+.signInLinnk {
+    color: red;
+    font-size: 1em;
+    margin-top: 1%;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 1%;
+}
+
+.signInLinnk:hover {
+    background-color: white;
+    text-decoration: underline;
+}
+
+.container h1 {
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    text-align: center; 
+    margin-top: 2%;
+}
+
+.container .registrationForm {
+    margin-top: 6%;
+}
+
+.registrationForm .inputBox {
+    width: 100%;
+    margin-top: 3%;
+}
+
+.registrationForm .inputBox input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgb(173, 168, 168);
+    border-radius: 6px;
+    padding: 0 2%;
+    font-size: 1em;
+    color: #707070;
+    margin-top: 2%;
+}
+
+.registrationForm .inputBox input:focus {
+    border-color: #16a085;
+    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+}
+
+.column #birthDate {
+    font-size: 1.2em;
+}
+
+.registrationForm .column {
+    display: flex;
+    column-gap: 2%;
+}
+
+.registrationForm .genderBox {
+    margin-top: 5%;
+}
+
+.genderBox h3 {
+    font-size: 1em;
+    margin-bottom: 2%;
+    font-weight: 4;
+}
+
+.registrationForm .genderOption {
+    display: flex;
+    align-items: center;
+    column-gap: 5%;
+}
+
+.registrationForm .gender {
+    column-gap: 2%;
+}
+
+.registrationForm .rowButton input {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-left: 0;
+    background: #16a085;
+    border: 1px solid #16a085;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 1%;
+}
+
+.registrationForm .rowButton input:hover{
+    background: #12876f;
+}
+
+input[type=radio]#checkMale {
+    accent-color:  #16a085;
+}
+
+input[type=radio]#checkFemale {
+    accent-color:  #16a085;
+}
+
+@media  screen and (max-width: 915px) {
+    .container {
+        margin-top: 10%;
+    }
+}

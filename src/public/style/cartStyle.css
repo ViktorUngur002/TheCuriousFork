@@ -1,0 +1,128 @@
+.cart{
+    position: fixed;
+    top: 0;
+    right: 0;
+    right: -100%;
+    width: 360px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*padding: 20px;*/
+    background-color: white;
+    box-shadow: -2px solid 4px hsl(0 4% 15% / 10%);
+    border: 1px solid var(--main-color);
+    transition: 1.5s;
+}
+.cart.active{
+    right: 0;
+    transition: .5s;
+}
+
+.cartTitleContainer {
+    width: 100%;
+    background-color: rgb(151, 148, 148);
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.cartTitle{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    color: black;
+}
+
+
+.cartBox{
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;
+    margin-top: 1%;
+    background-color: rgb(151, 148, 148);
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    color: black;
+    transition: 0.2s;
+}
+
+.cartBox:hover {
+    transform: scale(1.02);
+}
+
+.cartImg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.detailBox{
+    display: grid;
+    row-gap: .5rem;
+}
+.cartProductTitle{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.cartPrice{
+    font-weight: 500;
+}
+.cartQuantity{
+    border: 1px solid rgb(151, 148, 148);
+    outline-color: rgb(151, 148, 148);
+    width: 2.4rem;
+    text-align: center;
+    font-size: 1rem;
+}
+.cartRemove{
+    font-size: 24px;
+    cursor: pointer;
+}
+.total{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 2%;
+    margin-top: 1.5rem;
+    border-top: 1px solid;
+}
+.totalTitle{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: black;
+}
+.totalPrice{
+    margin-left: .5rem;
+    color: black;
+}
+
+.btnBuy{
+    display: flex;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    border: none;
+    background-color: rgb(60, 145, 60);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.btnBuy:hover{
+    background-color: green;
+}
+#cartClose{
+    position: absolute;
+    top: 1rem;
+    right: .8rem;
+    font-size: 3rem;
+    color: black;
+    cursor: pointer;
+    /*background-color: red;*/
+}

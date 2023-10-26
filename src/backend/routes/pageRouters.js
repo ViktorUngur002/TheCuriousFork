@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const { checkAuthentication } = require('../middlewares/authMiddleware');
-
+const { protect } = require('../middlewares/authMiddleware');
 
 router.get('*^/$|/homepage(.html)?', async (req, res) => {
+   
+   
     res.sendFile(path.join(__dirname, '..', '..', 'views', 'homepage.html'));
+
+    
 });
 
 router.get('/aboutus(.html)?', async (req, res) => {
@@ -31,6 +34,10 @@ router.get('/signin(.html)?', async (req, res) => {
 router.get('/signup(.html)?', async (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'views', 'signup.html'));
 })
+
+router.get('/profile(.html)?', protect, async (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..',  'views', 'profile.html'));
+});
 
 
 module.exports = router;

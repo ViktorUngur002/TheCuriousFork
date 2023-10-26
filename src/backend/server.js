@@ -2,6 +2,8 @@ const dotenv = require("dotenv");
 const express = require('express');
 const path = require('path');
 const mongoose = require("mongoose");
+const cookieParser = require('cookie-parser');
+//const { checkTokenInCookie } = require('./middlewares/checkLoggedMiddleware');
 const PORT = process.env.PORT || 3500;
 
 dotenv.config();
@@ -21,6 +23,8 @@ const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
+app.use(cookieParser());
+//app.use(checkTokenInCookie);
 
 app.use('/',  require('./routes/pageRouters'));
 app.use('/signup', require('./routes/registerRouter'));

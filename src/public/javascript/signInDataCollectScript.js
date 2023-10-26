@@ -39,9 +39,6 @@ form.addEventListener("submit", function(event) {
     .then(data => {
         if(data.success) {
             const signInButton = document.querySelector(".signIn");
-            if (signInButton) {
-                signInButton.style.display = "none";
-            }
             window.location.href = '/homepage.html';
             //console.log(data);
         } else if (data.error && data.error.includes('Wrong email or password.')) {

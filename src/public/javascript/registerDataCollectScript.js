@@ -52,7 +52,6 @@ form.addEventListener("submit", function(event) {
         }
     })
     .catch(error => {
-        // Handle errors (e.g., display an error message)
         console.error(error);
     });
 

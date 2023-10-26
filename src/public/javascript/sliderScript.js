@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
             slides[i].style.display = "none";
         }
 
-        slideIndex++;  // Increment the index first.
+        slideIndex++; 
 
         if (slideIndex > slides.length) {
-            slideIndex = 1; // Reset to the first slide if we've reached the end.
+            slideIndex = 1; 
         }
 
-        slides[slideIndex - 1].style.display = "block"; // Adjusted index here.
+        slides[slideIndex - 1].style.display = "block"; 
 
-        setTimeout(showSlides, 5000); // Change image every 2 seconds
+        setTimeout(showSlides, 5000); 
     }
 });
 

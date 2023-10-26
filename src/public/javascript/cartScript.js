@@ -65,6 +65,7 @@ function handle_addCartItem() {
     title,
     price,
     imgsrc,
+    quantityStored: 1
   };
 
   // handle item is already exist
@@ -144,7 +145,12 @@ function updateTotal() {
   cartBoxes.forEach((cartBox) => {
     let priceElement = cartBox.querySelector(".cartPrice");
     let price = parseFloat(priceElement.innerHTML.replace("$", ""));
+    let itemName = cartBox.querySelector(".cartProductTitle");
+
+    let cartItem = itemsAdded.find((item) => item.title === itemName);
+
     let quantityProduct = cartBox.querySelector(".cartQuantity").value;
+    cartItem.quantityStored = quantityProduct
     total += price*quantityProduct;
   });
 
@@ -170,3 +176,4 @@ function CartBoxComponent(title, price, imgsrc) {
         <i class='bx bxs-trash-alt cartRemove'></i>
     </div>`;
 }
+

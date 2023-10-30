@@ -18,12 +18,16 @@ if (document.readyState == "loading") {
 }
 
 function start() {
+  loadCartFromStorage();
+  updateTotal();
+  checkQuantityAndRemoveClass();
   addEvents();
 }
 
 function update() {
   addEvents();
   updateTotal();
+  saveCartToStorage();
 }
 
 //remove items from cart
@@ -65,7 +69,7 @@ function handle_addCartItem() {
     title,
     price,
     imgsrc,
-    quantityStored: 1
+    quantityStored:1,
   };
 
   // handle item is already exist
@@ -96,10 +100,12 @@ function handle_removeCartItem() {
   let currentCount = parseInt(quantity.textContent);
   let newCount = currentCount - 1;
   quantity.textContent = newCount;
+  
   itemsAdded = itemsAdded.filter(
     (el) => 
       el.title != this.parentElement.querySelector(".cartProductTitle").innerHTML
   );
+
   if(itemsAdded.length === 0) {
     quantity.innerHTML = "0";
     quantity.classList.add("hidden");
@@ -110,13 +116,19 @@ function handle_removeCartItem() {
 
 function handle_changeItemQuantity() {
   let inputValue = this.value;
-  let quantity = parseInt(inputValue, 10);
+  let itemQuantity = parseInt(inputValue, 10);
 
-  if (isNaN(quantity) || quantity < 1) {
-    quantity = 1;
+  if (isNaN(itemQuantity) || itemQuantity < 1) {
+    itemQuantity = 1;
   }
 
-  this.value = quantity;
+  const productQuantityToChange = this.parentElement.querySelector('.cartProductTitle').innerHTML;
+  const itemToUpdate = itemsAdded.find((el) => el.title === productQuantityToChange);
+  if(itemToUpdate) {
+    itemToUpdate.quantityStored = itemQuantity;
+  }
+
+  this.value = itemQuantity;
 
   update();
 }
@@ -147,10 +159,7 @@ function updateTotal() {
     let price = parseFloat(priceElement.innerHTML.replace("$", ""));
     let itemName = cartBox.querySelector(".cartProductTitle");
 
-    let cartItem = itemsAdded.find((item) => item.title === itemName);
-
     let quantityProduct = cartBox.querySelector(".cartQuantity").value;
-    cartItem.quantityStored = quantityProduct
     total += price*quantityProduct;
   });
 
@@ -177,3 +186,41 @@ function CartBoxComponent(title, price, imgsrc) {
     </div>`;
 }
 
+function checkQuantityAndRemoveClass() {
+  let currentCount = parseInt(quantity.textContent);
+  if (currentCount > 0) {
+    quantity.classList.remove("hidden");
+  } else {
+    quantity.classList.add("hidden");
+  }
+}
+
+function saveCartToStorage() {
+  localStorage.setItem('cart', JSON.stringify(itemsAdded));
+  localStorage.setItem('spanQuantity', JSON.stringify(quantity.textContent));
+}
+
+function loadCartFromStorage() {
+  const storedCart = localStorage.getItem('cart');
+  const storedQuantity = localStorage.getItem('spanQuantity');
+  if (storedCart) {
+    itemsAdded = JSON.parse(storedCart);
+    quantity.textContent = JSON.parse(storedQuantity);
+    renderCart();
+  }
+}
+
+function renderCart() {
+  const cartContent = cart.querySelector('.cartContent');
+  cartContent.innerHTML = '';
+  itemsAdded.forEach(function(item) {
+    const cartBoxElement = CartBoxComponent(item.title, item.price, item.imgsrc);
+    const newNode = document.createElement('div');
+    newNode.innerHTML = cartBoxElement;
+    const inputElement = newNode.querySelector(".cartQuantity");
+    if (inputElement) {
+      inputElement.value = item.quantityStored;
+    }
+    cartContent.appendChild(newNode);
+  });
+}

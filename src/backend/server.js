@@ -30,6 +30,8 @@ app.use('/',  require('./routes/pageRouters'));
 app.use('/signup', require('./routes/registerRouter'));
 app.use('/signin', require('./routes/authRouter'));
 app.use('/logout', require('./routes/logoutRouter'));
+app.use('/user/update', require('./routes/updateUserRouter'));
+app.use('/user/delete', require('./routes/deleteUserRouter'));
 app.use('/', require('./routes/mePageRouter'));
 
 app.listen(PORT, () => {

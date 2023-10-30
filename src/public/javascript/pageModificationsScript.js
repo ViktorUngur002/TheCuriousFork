@@ -1,3 +1,5 @@
+const signInButton = document.querySelector('.signIn');
+
 async function isAuthenticated() {
     try {
         const response = await fetch('/me' , {
@@ -17,11 +19,13 @@ async function isAuthenticated() {
 }
 
 async function updateDisplay() {
-    const signInButton = document.querySelector('.signIn');
+    
     if(signInButton) {
         if(await isAuthenticated()) {
+            signInButton.style.opacity = 0;
             signInButton.textContent = 'Profile';
             signInButton.href = '/profile.html';
+            signInButton.style.opacity = 1;
         }
     }
 }

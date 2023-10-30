@@ -6,10 +6,12 @@
     <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
     <link rel="stylesheet" type="text/css" href="/style/styleSignUp.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
+    <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
@@ -24,7 +26,33 @@
             </div>
             <div>
                 <a class="signIn" href="signin.html">Sign in</a>
-                <a><i class="fa fa-shopping-cart" style="font-size:24px"></a></i>
+                <div class="shopping">
+                    <a id="cartIcon">
+                        <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+                        <span class="quantity hidden">0</span>
+                    </a>
+                </div>
+                <div class="cart">
+                    <div class="cartTitleContainer">
+                        <h2 class="cartTitle">Your Cart</h2>
+                    </div>
+    
+                    <!-- CONTENT  -->
+                    <div class="cartContent">
+    
+    
+                    </div>
+    
+                    <!-- TOTAL   -->
+                    <div class="total">
+                        <div class="totalTitle">Total</div>
+                        <div class="totalPrice">$0</div>
+                    </div>
+                    <!-- BUY BUTTON  -->
+                    <button type="button" class="btnBuy">Buy Now</button>
+                    <!-- CART CLOSE  -->
+                    <i class='bx bx-x' id="cartClose"></i>
+                </div>
                 <a href="aboutus.html">About Us</a>
                 <div class="dropdown">
                     <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
@@ -128,5 +156,6 @@
     </footer>
 
     <script src="/javascript/registerDataCollectScript.js"></script>
+    <script src="/javascript/cartScript.js"></script>
 </body>
 </html>

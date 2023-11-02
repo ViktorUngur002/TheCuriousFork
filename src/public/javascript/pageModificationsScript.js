@@ -1,3 +1,6 @@
+const signInButton = document.querySelector('.signIn');
+let isAdmin;
+
 async function isAuthenticated() {
     try {
         const response = await fetch('/me' , {
@@ -6,6 +9,8 @@ async function isAuthenticated() {
         });
 
         if(response.ok) {
+            const data = await response.json();
+            isAdmin = data.isAdmin;
             return true;
         } else {
             return false;
@@ -17,11 +22,21 @@ async function isAuthenticated() {
 }
 
 async function updateDisplay() {
-    const signInButton = document.querySelector('.signIn');
+    
     if(signInButton) {
         if(await isAuthenticated()) {
+            signInButton.style.opacity = 0;
             signInButton.textContent = 'Profile';
             signInButton.href = '/profile.html';
+            signInButton.style.opacity = 1;
+
+            if(isAdmin) {
+                const adminButton = document.createElement('a');
+                adminButton.className = 'signIn';
+                adminButton.href = '/admin.html';
+                adminButton.textContent = 'Admin';
+                signInButton.parentElement.insertBefore(adminButton, signInButton);
+            }
         }
     }
 }

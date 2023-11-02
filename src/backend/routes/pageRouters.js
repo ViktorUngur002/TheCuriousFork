@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const { protect } = require('../middlewares/authMiddleware');
+const { protect, isAdmin } = require('../middlewares/authMiddleware');
 
 router.get('*^/$|/homepage(.html)?', async (req, res) => {
-   
-   
     res.sendFile(path.join(__dirname, '..', '..', 'views', 'homepage.html'));
-
-    
 });
 
 router.get('/aboutus(.html)?', async (req, res) => {
@@ -37,6 +33,22 @@ router.get('/signup(.html)?', async (req, res) => {
 
 router.get('/profile(.html)?', protect, async (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..',  'views', 'profile.html'));
+});
+
+router.get('/admin(.html)?', protect, isAdmin, async(req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'views', 'admin.html'));
+});
+
+router.get('/addProduct(.html)?', protect, isAdmin, async(req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'views', 'addProduct.html'));
+});
+
+router.get('/updateProduct(.html)?', protect, isAdmin, async(req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'views', 'updateProduct.html'));
+});
+
+router.get('/deleteProduct(.html)?', protect, isAdmin, async(req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'views', 'deleteProduct.html'));
 });
 
 

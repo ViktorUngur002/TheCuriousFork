@@ -40,6 +40,7 @@ const handleLogin = async (req, res) => {
             _id: foundUser.id,
             name: foundUser.name,
             email: foundUser.email,
+            isAdmin: foundUser.isAdmin,
             token: generateToken(foundUser._id),
             success: 'Login succed',
             isAuthenticated: true,

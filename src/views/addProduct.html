@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
-    <link rel="stylesheet" type="text/css" href="/style/styleSignUp.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleProducts.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
@@ -13,8 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <title>The Curious Fork</title>
 </head>
 <body>
@@ -28,7 +28,7 @@
                 <a class="signIn" href="signin.html">Sign in</a>
                 <div class="shopping">
                     <a id="cartIcon">
-                        <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+                        <i class="fa fa-shopping-cart" style="font-size:20px"></i>
                         <span class="quantity hidden">0</span>
                     </a>
                 </div>
@@ -68,76 +68,58 @@
         </nav>
     </header>
 
-   <section class="registration">
-    <div class="container">
-        <h1>Join Our Family</h1>
-        <form action="/signup" method="post" class="registrationForm" id="registration">
-            <div class="inputBox">
-                <label for="">Full Name</label>
-                <input type="text" name="name" placeholder="Enter full name"/>
-            </div>
-
-            <div class="inputBox">
-                <label for="">Email</label>
-                <input type="text" name="email" placeholder="Enter email address" />
-            </div>
-
-            <div class="column">
-                <div class="inputBox">
-                    <label for="">Password</label>
-                    <input type="password" name="password" placeholder="Enter password" />
+    <section class="mainSection">
+        <div class="container">
+            <form action="/addProducts" method="post" class="productAddForm" id="productAdd">
+                <label class="selectMeal" for="">Select Meal</label>
+                <div class="selectBox">
+                    <select name="mealType" id="mealType">
+                        <option value="Main Course">Main Course</option>
+                        <option value="Salad">Salad</option>
+                        <option value="Dessert">Dessert</option>
+                    </select>
+                </div>
+    
+                <div class="inputBox" id="section">
+                    <label for="">Section</label>
+                    <input type="text" name="section"/>
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Confirm Password</label>
-                    <input type="password" name="confirmPassword" placeholder="Enter password" />
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="inputBox">
-                    <label for="">Phone Number</label>
-                    <input type="text" name="phoneNumber" placeholder="Enter phone number" />
+                    <label for="">Title</label>
+                    <input type="text" name="title"/>
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Birth Date</label>
-                    <input id="birthDate" name="birthdayDate" type="date" placeholder="Enter birth date" />
+                    <label for="">Description</label>
+                    <input type="text" name="description"/>
                 </div>
-            </div>
 
-            <div class="genderBox">
-                <h3>Gender</h3>
-                <div class="genderOption">
-                    <div class="gender">
-                        <input type="radio" name="gender" id="checkMale" value="male" checked/>
-                        <label for="checkMale">Male</label>
+                <div class="inputBox">
+                    <label for="">Price</label>
+                    <input type="text" name="price"/>
+                </div>
+
+                <div class="pictureInput">
+                    <div class="pictureDiv">
+                        <label for="">Choose Picture</label>
+                        <input id="image" type="file" accept="picture/*" name="image"/>
                     </div>
-                    <div class="gender">
-                        <input type="radio" name="gender" id="checkFemale" value="female" />
-                        <label for="checkFemale">Female</label>
+                    <div class="pictureDiv">
+                        <img id="imagePreview" src="#" alt="Preview">
                     </div>
                 </div>
-            </div>
-
-            <div class="column">
-                <div class="inputBox">
-                    <label for="">Address</label>
-                    <input type="text" name="address" placeholder="Enter address" />
+    
+                <div class="rowButton">
+                    <input type="submit" value="Add Product">
                 </div>
-
-                <div class="inputBox">
-                    <label for="">No.</label>
-                    <input type="text" name="addressNumber" placeholder="Enter number" />
-                </div>
+            </form>    
+            
+            <div id="successMessage" class="successMessage">
+                <p class="successMessageText"></p>
             </div>
-
-            <div class="rowButton">
-                <input type="submit" value="Sign Up">
-            </div>
-        </form>     
-    </div>
-   </section>
+        </div>
+       </section>
 
     <footer>
         <div class="footerContact">
@@ -155,7 +137,9 @@
         </div>
     </footer>
 
-    <script src="/javascript/registerDataCollectScript.js"></script>
     <script src="/javascript/cartScript.js"></script>
+    <script src="/javascript/pageModificationsScript.js"></script>
+    <script src="/javascript/imagePreviewScript.js"></script>
+    <script src="/javascript/showSectionScript.js"></script>
 </body>
 </html>

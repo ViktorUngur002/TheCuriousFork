@@ -76,10 +76,10 @@
 
     <section class="mainSection">
         <div class="container">
-            <form action="/logout" method="get" class="userDataForm" id="userData">
+            <form action="" method="get" class="userDataForm" id="userData">
                 <div class="inputBox">
                     <label for="">Email</label>
-                    <input type="text" class="email" name="email" placeholder="" />
+                    <input type="text" class="email" name="email" placeholder="" readonly/>
                 </div>
                 
                 <div class="inputBox">
@@ -112,7 +112,14 @@
                         <input type="submit" value="Delete User">
                     </div>
                 </div>
-            </form>     
+            </form>
+            
+       
+            <div id="successMessage" class="successMessage">
+                <p class="successMessageText"></p>
+            </div>
+        
+
         </div>
     </section>
 
@@ -134,5 +141,16 @@
     <script src="/javascript/cartScript.js"></script>
     <script src="/javascript/gettingUserDataScript.js"></script>
     <script src="/javascript/buttonsActionScript.js"></script>
+
+    <div id="customConfirm" class="customConfirm">
+        <div class="customConfirmContent">
+          <p>Are you sure you want to delete your account?</p>
+          <div class="buttonDialogDiv">
+            <button class="buttonDialog" id="confirmYes">Yes</button>
+            <button class="buttonDialog" id="confirmNo">No</button>
+          </div>
+        </div>
+    </div>
+
 </body>
 </html>

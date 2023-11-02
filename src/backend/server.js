@@ -32,6 +32,10 @@ app.use('/signin', require('./routes/authRouter'));
 app.use('/logout', require('./routes/logoutRouter'));
 app.use('/user/update', require('./routes/updateUserRouter'));
 app.use('/user/delete', require('./routes/deleteUserRouter'));
+app.use('/addProducts', require('./routes/addProductRouter'));
+app.use('/product/update', require('./routes/updateProductRouter'));
+app.use('/product/delete', require('./routes/deleteProductRouter'));
+app.use('/', require('./routes/getOneProductRouter'));
 app.use('/', require('./routes/mePageRouter'));
 
 app.listen(PORT, () => {

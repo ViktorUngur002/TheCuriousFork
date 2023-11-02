@@ -1,4 +1,5 @@
 const signInButton = document.querySelector('.signIn');
+let isAdmin;
 
 async function isAuthenticated() {
     try {
@@ -8,6 +9,8 @@ async function isAuthenticated() {
         });
 
         if(response.ok) {
+            const data = await response.json();
+            isAdmin = data.isAdmin;
             return true;
         } else {
             return false;
@@ -26,6 +29,14 @@ async function updateDisplay() {
             signInButton.textContent = 'Profile';
             signInButton.href = '/profile.html';
             signInButton.style.opacity = 1;
+
+            if(isAdmin) {
+                const adminButton = document.createElement('a');
+                adminButton.className = 'signIn';
+                adminButton.href = '/admin.html';
+                adminButton.textContent = 'Admin';
+                signInButton.parentElement.insertBefore(adminButton, signInButton);
+            }
         }
     }
 }

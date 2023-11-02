@@ -1,0 +1,29 @@
+.mainSection {
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.options {
+    flex: 1;
+    column-gap: 3%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.options a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    background-color: rgb(60, 145, 60);
+}
+
+.options a:hover {
+    background-color: green;
+}

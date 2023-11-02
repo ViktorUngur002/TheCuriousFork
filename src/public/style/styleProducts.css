@@ -1,0 +1,191 @@
+.mainSection {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8%;
+}
+
+.errorMessage {
+    color: red;
+    font-size: .8em;
+    margin-top: 1%;
+}
+
+.errorMessageExists {
+    color: red;
+    font-size: 1.2em;
+    margin-top: 1%;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 2%;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 9%;
+    margin-bottom: 9%;
+    margin: auto;
+}
+
+.selectMeal {
+    font-size: 1.3em;
+    margin-bottom: 2%;
+}
+
+.selectBox {
+    margin-top: 2%;
+    position: relative;
+    width: 200px;
+    border: 1px solid rgb(56, 54, 54);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.selectBox select {
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: none;
+    background-color: rgb(56, 54, 54);
+    cursor: pointer;
+    outline: none;
+}
+
+.selectBox option {
+    color: white;
+}
+
+.selectBox option:hover {
+    background-color: rgb(110, 104, 104);
+}
+
+.selectBox option:focus {
+    background-color: rgb(110, 104, 104);
+}
+
+.container .productAddForm {
+    margin-top: 6%;
+}
+
+.productAddForm .inputBox {
+    width: 100%;
+    margin-top: 3%;
+}
+
+.productAddForm .inputBox input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    background-color: rgb(56, 54, 54);
+    border: 1px solid rgb(56, 54, 54);
+    border-radius: 6px;
+    padding: 0 2%;
+    font-size: 1.2em;
+    color: white;
+    margin-top: 2%;
+}
+
+.productAddForm .inputBox label {
+    font-size: 1.3em;
+}
+
+.productAddForm .inputBox input:focus {
+    border-color: #16a085;
+    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+}
+
+.productAddForm .rowButton input {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-left: 0;
+    background: #16a085;
+    border: 1px solid #16a085;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 1%;
+}
+
+.productAddForm .rowButton input:hover{
+    background: #12876f;
+}
+
+.pictureInput {
+    margin-top: 4%;
+    position: relative;
+    width: 30%;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    column-gap: 2%;
+}
+
+.pictureDiv {
+    flex: 1;
+}
+
+.pictureInput label {
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: rgb(56, 54, 54);
+    cursor: pointer;
+    display: block;
+    color: white;
+}
+
+.pictureInput input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: rgb(56, 54, 54);
+    cursor: pointer;
+    outline: none;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.pictureInput label:hover {
+    background-color: rgb(110, 104, 104);
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+
+/*STYLE SUCCESS MESAGE*/
+
+.successMessage {
+    display: none;
+    margin: auto;
+    background-color: rgb(69, 128, 69);
+    width: 20%;
+    text-align: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.successMessage p {
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 2%;
+}
+
+/*END*/

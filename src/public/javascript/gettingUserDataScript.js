@@ -3,6 +3,7 @@ let email;
 let phoneNumber;
 let address;
 let addressNumber;
+let isAdmin;
 
 async function isAuthenticated() {
     try {
@@ -14,6 +15,7 @@ async function isAuthenticated() {
         if(response.ok) {
             const data = await response.json();
             userName = data.name;
+            isAdmin = data.isAdmin;
             email = data.email;
             phoneNumber = data.phoneNumber;
             address = data.address;
@@ -45,6 +47,14 @@ async function updateDisplay() {
             phoneNumberInput.value = phoneNumber;
             addressInput.value = address;
             addressNumberInput.value = addressNumber;
+
+            if(isAdmin) {
+                const adminButton = document.createElement('a');
+                adminButton.className = 'signIn';
+                adminButton.href = '/admin.html';
+                adminButton.textContent = 'Admin';
+                signInButton.parentElement.insertBefore(adminButton, signInButton);
+            }
         }
     }
 }

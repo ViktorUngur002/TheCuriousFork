@@ -22,7 +22,7 @@ form.addEventListener("submit", async function(event) {
   } 
 
   if(action === "Save") {
-    handleSave();
+    handleSave(event);
   }
 
   if(action === "Delete User") {
@@ -71,7 +71,7 @@ async function handleLogout() {
  
 }
 
-async function handleSave() {
+async function handleSave(event) {
   const formTarget = event.target;
     const formData = new FormData(formTarget);
 

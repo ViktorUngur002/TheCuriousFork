@@ -18,7 +18,11 @@ const updateUser = async (req, res) => {
 
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body)
 
-        res.status(200).json({ message: "User updated" });
+        if(updatedUser) {
+            res.status(200).json({ message: "User updated" });
+        } else {
+            res.status(400).json({ message: "User data incorect!" });
+        }
     } catch (err) {
         res.status(500).json({ error:err.message });
     }

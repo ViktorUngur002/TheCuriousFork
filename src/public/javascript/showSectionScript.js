@@ -1,12 +1,12 @@
 const mealType = document.getElementById('mealType');
-const sectionInput = document.getElementById('section');
+const section = document.getElementById('section');
 
 mealType.addEventListener('change', function() {
     const selectedOption = mealType.value;
 
     if(selectedOption === 'Main Course') {
-        sectionInput.style.display = 'block';
+        section.style.display = 'block';
     } else {
-        sectionInput.style.display = 'none';
+        section.style.display = 'none';
     }
 });

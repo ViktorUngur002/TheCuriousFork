@@ -1,8 +1,10 @@
 const form = document.getElementById("productAdd");
 const sectionInput = document.getElementById('section');
 
-document.getElementById('submitButton').addEventListener('click', function(event) {
+form.addEventListener('submit', function(event) {
     event.preventDefault();
+
+    console.log("here i am");
 
     clearErrorMessages();
 
@@ -24,7 +26,9 @@ document.getElementById('submitButton').addEventListener('click', function(event
     });
 
     const imageInput = document.getElementById('image');
+    console.log(imageInput);
     const imageFile = imageInput.files[0];
+    console.log(imageFile);
 
     if (imageFile) {
         formData.append("image", imageFile);
@@ -43,10 +47,10 @@ document.getElementById('submitButton').addEventListener('click', function(event
 
     fetch('/addProducts', {
         method: 'POST',
-        body: JSON.stringify(formDataJson),
-        headers: {
-        'Content-Type': 'application/json'
-        }
+        body: formData,
+        //headers: {
+        //'Content-Type': 'application/json'
+        //}
     })
     .then(response => response.json())
     .then(data => {

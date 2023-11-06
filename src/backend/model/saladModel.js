@@ -18,7 +18,7 @@ const saladSchema = mongoose.Schema({
     },
 
     image: {
-        type: Buffer,
+        type: String,
         required: [true, 'Please add an image'],
     }
 },

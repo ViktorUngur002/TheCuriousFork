@@ -1,0 +1,265 @@
+.mainSection {
+    margin-top: 20%;
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.users {
+    flex: 1;
+}
+
+.errorMessage {
+    color: red;
+    font-size: .8em;
+    margin-top: 1%;
+}
+
+.orders {
+    flex: 1;
+}
+
+.container {
+    display: flex;
+    padding: 1%;
+    background-color: rgb(129, 127, 127);
+    margin: 2% 2% 2% 2%;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/*USER PART*/
+
+.leftSectionUser {
+    flex: 1;
+}
+
+.leftSectionUser h3 {
+    margin-top: 0;
+    margin-left: 2%;
+    font-size: 1.2em;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.rightSectionUser {
+    flex: 2;
+}
+
+.rightSectionUser .userDataForm .inputBox {
+    width: 100%;
+    margin-top: 3%;
+}
+
+.rightSectionUser .userDataForm .inputBox input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    background-color: rgb(56, 54, 54);
+    border: 1px solid rgb(56, 54, 54);
+    border-radius: 6px;
+    padding: 0 2%;
+    font-size: 1.2em;
+    color: white;
+    margin-top: 2%;
+}
+
+.rightSectionUser .userDataForm .inputBox label {
+    font-size: 1.3em;
+}
+
+.rightSectionUser .userDataForm .inputBox input:focus {
+    border-color: #16a085;
+    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+}
+
+.rightSectionUser .userDataForm .column {
+    display: flex;
+    column-gap: 2%;
+}
+
+.rightSectionUser .userDataForm .buttons {
+    display: flex;
+    margin-bottom: 5%;
+    margin-top: 8%;
+    column-gap: 2%;
+}
+
+.rightSectionUser .userDataForm .buttons .buttonSave {
+    flex: 1;
+    
+}
+
+.rightSectionUser .userDataForm .buttons .buttonDeleteUser {
+     flex: 1;
+    
+}
+
+.rightSectionUser .userDataForm .buttons .buttonSave input {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-left: 0;
+    background: #16a085;
+    border: 1px solid #16a085;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 1%;
+    color: white;
+}
+
+.rightSectionUser .userDataForm .buttons .buttonDeleteUser input {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-left: 0;
+    background: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 1%;
+    color: white;
+}
+
+.rightSectionUser .userDataForm .buttons .buttonSave input:hover{
+    background: #12876f;
+    border: 1px solid #12876f;
+}
+
+.rightSectionUser .userDataForm .buttons .buttonDeleteUser input:hover{
+    background: rgb(190, 46, 46);
+    border: 1px solid rgb(190, 46, 46);
+}
+
+/*END USER PART*/
+
+/*ORDER DATA PART*/
+
+.leftSectionOrder {
+    flex: 2;
+}
+
+.leftSectionOrder h3 {
+    margin-top: 0;
+    margin-left: 5%;
+    font-size: 1.8em;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.rightSectionOrder {
+    flex: 1;
+}
+
+.rightSectionOrder h3 {
+    margin-top: 0;
+    margin-left: 5%;
+    font-size: 1.8em;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.rightSectionOrder .buttonDeleteOrder input {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-left: 0;
+    background: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 1%;
+    color: white;
+}
+
+.rightSectionOrder .buttonDeleteOrder input:hover {
+    background: rgb(190, 46, 46);
+    border: 1px solid rgb(190, 46, 46);
+}
+
+/*END ORDER DATA PART*/
+
+/*STYLE OF DELETE DIALOG*/
+
+.customConfirm {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+  
+.customConfirmContent {
+    background-color: rgb(129, 127, 127);
+    padding: 20px;
+    border: 1px solid rgb(129, 127, 127);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+  
+.customConfirmContent p {
+    margin: auto;
+    margin-bottom: 15%;
+    font-size: 1.2em;
+}
+
+.buttonDialogDiv {
+    display: flex;
+    column-gap: 2%;
+}
+
+.buttonDialogDiv .buttonDialog {
+    flex: 1;
+    width: 100%;
+    font-size: 1em;
+    border: 1px solid rgb(24, 23, 23);
+    background-color: rgb(24, 23, 23);
+    color: white;
+    padding: 2%;
+    border-radius: 5px;
+}  
+  
+.buttonDialogDiv .buttonDialog:hover {
+    background-color: rgb(51, 50, 50);
+    border: 1px solid rgb(51, 50, 50);
+}
+
+.custom-confirm-content button {
+    margin-right: 2%;
+}
+
+/*END*/
+
+/*STYLE SUCCESS MESAGE*/
+
+.successMessage {
+    display: none;
+    margin: auto;
+    background-color: rgb(69, 128, 69);
+    width: 20%;
+    text-align: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.successMessage p {
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 2%;
+}
+
+/*END*/

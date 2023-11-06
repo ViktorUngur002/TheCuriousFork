@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
-    <link rel="stylesheet" type="text/css" href="/style/styleSaladsMenu.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleOrdersAndUsers.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
     <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
@@ -56,7 +56,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-content">
-                        <a class="active" href="salads.html">Salads</a>
+                        <a href="salads.html">Salads</a>
                         <a href="maincourse.html">Main Course</a>
                         <a href="desserts.html">Desserts</a>
                     </div>
@@ -67,70 +67,28 @@
         </nav>
     </header>
 
-    <div class="titleWrapper">
-        <h1 class="welcomeTitle">Welcome To Our Salads Menu</h1>
-    </div>
-
-   <section id="menu" class="menu">
-    <!--<div class="container">
-        <div class="leftSection"><img class="productImage" src="/images/food/flat-lay-salad-with-chicken-sesame-seeds.jpg" alt=""></div>
-        <div class="rightSection">
-            <h3 class="dishTitle" >Chicken salad</h3>
-            <p></p>
+   <section class="mainSection">
+        <div class="users" id="users">
         </div>
-        <div class="priceAndOrder">
-            <h3 class="price">$30.99</h3>
-            <button class="addCart" >Order Now</button>
+        <div class="orders">
+            <div class="container">
+                <div class="leftSectionOrder">
+                    <h3>Order info</h3>
+                    <div class="orderInfo">
+                        <h3>Phone Number</h3>
+                        <h3>Address</h3>
+                        <h3>Date</h3>
+                        <h3>Products</h3>
+                        <h3>Price</h3>
+                    </div>
+                </div>
+                <div class="rightSectionOrder">
+                    <div class="buttonDeleteOrder">
+                        <input type="submit" value="Delete Order">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="leftSection"><img class="productImage" src="/images/food/flat-lay-tasty-fresh-salad-black-plate-with-copy-space.jpg" alt=""></div>
-        <div class="rightSection">
-            <h3 class="dishTitle" >Season salad</h3>
-            <p></p>
-        </div>
-        <div class="priceAndOrder">
-            <h3 class="price">$20.99</h3>
-            <button class="addCart" >Order Now</button>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="leftSection"><img class="productImage" src="/images/food/fruit-vegetable-salad-with-shrimp-asparagus.jpg" alt=""></div>
-        <div class="rightSection">
-            <h3 class="dishTitle" >Shrimp salad</h3>
-            <p></p>
-        </div>
-        <div class="priceAndOrder">
-            <h3 class="price">$32.99</h3>
-            <button class="addCart" >Order Now</button>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="leftSection"><img class="productImage" src="/images/food/high-angle-fresh-salad.jpg" alt=""></div>
-        <div class="rightSection">
-            <h3 class="dishTitle" >Tuna salad</h3>
-            <p></p>
-        </div>
-        <div class="priceAndOrder">
-            <h3 class="price">$30.99</h3>
-            <button class="addCart" >Order Now</button>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="leftSection"><img class="productImage" src="/images/food/top-view-salad-with-apple.jpg" alt=""></div>
-        <div class="rightSection">
-            <h3 class="dishTitle" >Apple salad</h3>
-            <p></p>
-        </div>
-        <div class="priceAndOrder">
-            <h3 class="price">$25.99</h3>
-            <button class="addCart" >Order Now</button>
-        </div>
-    </div>-->
    </section>
 
     <footer>
@@ -149,8 +107,18 @@
         </div>
     </footer>
 
+    <div id="customConfirm" class="customConfirm">
+        <div class="customConfirmContent">
+          <p>Are you sure you want to delete this account?</p>
+          <div class="buttonDialogDiv">
+            <button class="buttonDialog" id="confirmYes">Yes</button>
+            <button class="buttonDialog" id="confirmNo">No</button>
+          </div>
+        </div>
+    </div>
+
     <script src="/javascript/cartScript.js"></script>
     <script src="/javascript/pageModificationsScript.js"></script>
-    <script src="/javascript/saladDisplayScript.js"></script>
+    <script src="/javascript/userAndOrderScript.js"></script>
 </body>
 </html>

@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
-    <link rel="stylesheet" type="text/css" href="/style/styleAdmin.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleCheckOut.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
-    <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
     <title>The Curious Fork</title>
 </head>
 <body>
@@ -26,33 +25,7 @@
             </div>
             <div>
                 <a class="signIn" href="signin.html">Sign in</a>
-                <div class="shopping">
-                    <a id="cartIcon">
-                        <i class="fa fa-shopping-cart" style="font-size:20px"></i>
-                        <span class="quantity hidden">0</span>
-                    </a>
-                </div>
-                <div class="cart">
-                    <div class="cartTitleContainer">
-                        <h2 class="cartTitle">Your Cart</h2>
-                    </div>
-    
-                    <!-- CONTENT  -->
-                    <div class="cartContent">
-    
-    
-                    </div>
-    
-                    <!-- TOTAL   -->
-                    <div class="total">
-                        <div class="totalTitle">Total</div>
-                        <div class="totalPrice">$0</div>
-                    </div>
-                    <!-- BUY BUTTON  -->
-                    <button type="button" class="btnBuy">Buy Now</button>
-                    <!-- CART CLOSE  -->
-                    <i class='bx bx-x' id="cartClose"></i>
-                </div>
+                <span class="quantity hidden">0</span>
                 <a href="aboutus.html">About Us</a>
                 <div class="dropdown">
                     <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
@@ -68,20 +41,58 @@
         </nav>
     </header>
 
+    <div class="titleWrapper">
+        <h1 class="welcomeTitle">Welcome to Checkout</h1>
+    </div>
+
     <section class="mainSection">
-        <div class="options">
-            <a href="addProduct.html">Add product</a>
+        <div class="cartContent">
         </div>
-        <div class="options">
-            <a href="updateProduct.html">Update product</a>
-        </div>
-        <div class="options">
-            <a href="deleteProduct.html">Delete product</a>
-        </div>
-        <div class="options">
-            <a href="ordersAndUsers.html">Orders and Users</a>
+        <div class="userData">
+            <form action="/" method="post" class="userDataForm" id="userDataForm">
+                <div class="inputBox">
+                    <label for="">Full Name</label>
+                    <input type="text" class="username" name="customerName"/>
+                </div>
+    
+                <div class="inputBox">
+                    <label for="">Email</label>
+                    <input type="text" class="email" name="customerEmail" />
+                </div>
+                
+                <div class="inputBox">
+                    <label for="">Phone Number</label>
+                    <input type="text" class="phoneNumber" name="customerPhoneNumber" />
+                </div>
+    
+                <div class="column">
+                    <div class="inputBox">
+                        <label for="">Address</label>
+                        <input type="text" class="address" name="customerAddress"/>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label for="">No.</label>
+                        <input type="text" class="addressNumber" name="customerAddressNumber"/>
+                    </div>
+                </div>
+            </form>
+
         </div>
     </section>
+
+    <div class="total">
+        <h3 class="totalTitle">Total</h3>
+        <h3 class="totalPrice">$0</h3>
+    </div>
+
+    <div class="buttonDiv">
+        <button id="submitButton" class="submitButton">Order</button>
+    </div>
+
+    <div id="successMessage" class="successMessage">
+        <p class="successMessageText"></p>
+    </div>
 
     <footer>
         <div class="footerContact">
@@ -99,7 +110,8 @@
         </div>
     </footer>
 
-    <script src="/javascript/cartScript.js"></script>
-    <script src="/javascript/pageModificationsScript.js"></script>
+    <script src="/javascript/checkOutScript.js"></script>
+    <script src="/javascript/cartGetUserData.js"></script>
+    <script src="/javascript/placeOrderScript.js"></script>
 </body>
 </html>

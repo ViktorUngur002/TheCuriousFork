@@ -1,10 +1,10 @@
 const form = document.getElementById("productAdd");
 const sectionInput = document.getElementById('section');
+const myImage = document.getElementById("image");
+const previewImage = document.getElementById("imagePreview");
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-
-    console.log("here i am");
 
     clearErrorMessages();
 
@@ -12,10 +12,10 @@ form.addEventListener('submit', function(event) {
     const formData = new FormData(formTarget);
 
     isFormValid = true;
-    const requiredFields = ["mealType", "title", "description", "price", "image"];
+    const requiredFields = ["mealType", "title", "description", "price"];
 
     if(sectionInput.style.display === 'block') {
-        requiredFields.push("section");
+        requiredFields.append("section");
     }
 
     requiredFields.forEach(fieldName => {
@@ -26,48 +26,46 @@ form.addEventListener('submit', function(event) {
     });
 
     const imageInput = document.getElementById('image');
-    console.log(imageInput);
-    const imageFile = imageInput.files[0];
-    console.log(imageFile);
-
-    if (imageFile) {
-        formData.append("image", imageFile);
-    } else {
-        isFormValid = false;
+    if(imageInput.files.length === 0) {
+        displayValidationError('image', "Field must not be empty");
     }
 
     if(!isFormValid) {
         return;
     }
 
-    const formDataJson = {};
-    formData.forEach((value, key) => {
-        formDataJson[key] = value;
-    });
 
     fetch('/addProducts', {
         method: 'POST',
         body: formData,
-        //headers: {
-        //'Content-Type': 'application/json'
-        //}
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.success);
         if(data.success) {
-            window.location.href = '/homepage.html';
-        } else if (data.error && data.error.includes('User already exists')) {
+            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
+            const successText = successMessage.querySelector(".successMessageText");
+            successText.textContent = "Meal successfully added!";
+            successMessage.style.display = "block";
+        } else if (data.error && data.error.includes('Meal already exists')) {
             displayUserExistsMessage(data.error);
+        } else {
+            successMessage.style.backgroundColor = "red";
+            const successText = successMessage.querySelector(".successMessageText");
+            successText.textContent = "Adding product failed!";
+            successMessage.style.display = "block";
         }
     })
     .catch(error => {
         console.error(error);
     });
 
+    form.reset();
+    previewImage.src = "#";
+    previewImage.style.display = 'none';
+
     setTimeout(function() {
         successMessage.style.display = "none";
-      }, 3000);
+    }, 3000);
 
 });
 
@@ -95,13 +93,6 @@ function displayUserExistsMessage(errorMessage) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('errorMessageExists');
     messageDiv.textContent = errorMessage;
-
-    const signInLink = document.createElement('a');
-    signInLink.classList.add('signInLinnk');
-    signInLink.textContent = 'Go to Sign In';
-    signInLink.href = 'signin.html';
-
-    messageDiv.appendChild(signInLink);
 
     form.appendChild(messageDiv);
 }

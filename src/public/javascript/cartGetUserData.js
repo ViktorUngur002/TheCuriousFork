@@ -5,6 +5,8 @@ let address;
 let addressNumber;
 let isAdmin;
 
+console.log("starting the script")
+
 async function isAuthenticated() {
     try {
         const response = await fetch('/me' , {
@@ -42,7 +44,7 @@ async function updateDisplay() {
         if(await isAuthenticated()) {
             signInButton.textContent = 'Profile';
             signInButton.href = '/profile.html';  
-            usernameTitle.textContent = userName; 
+            usernameTitle.value = userName; 
             emailInput.value = email;
             phoneNumberInput.value = phoneNumber;
             addressInput.value = address;

@@ -24,6 +24,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(cookieParser());
+app.use('/public/uploads', express.static(path.join(__dirname, '..', 'public', 'uploads')));
 //app.use(checkTokenInCookie);
 
 app.use('/',  require('./routes/pageRouters'));
@@ -35,8 +36,13 @@ app.use('/user/delete', require('./routes/deleteUserRouter'));
 app.use('/addProducts', require('./routes/addProductRouter'));
 app.use('/product/update', require('./routes/updateProductRouter'));
 app.use('/product/delete', require('./routes/deleteProductRouter'));
+app.use('/addOrder', require('./routes/addOrderRouter'));
 app.use('/', require('./routes/getOneProductRouter'));
 app.use('/', require('./routes/mePageRouter'));
+app.use('/', require('./routes/getMainCourseProductsRouter'));
+app.use('/', require('./routes/getDessertsProductsRouter'));
+app.use('/', require('./routes/getSaladsProductsRouter'));
+app.use('/', require('./routes/getAllUsers'));
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);

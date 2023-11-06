@@ -168,9 +168,71 @@
     display: none;
 }
 
+/*STYLE OF DELETE DIALOG*/
+
+.customConfirm {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+  
+.customConfirmContent {
+    background-color: rgb(129, 127, 127);
+    padding: 20px;
+    border: 1px solid rgb(129, 127, 127);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+  
+.customConfirmContent p {
+    margin: auto;
+    margin-bottom: 15%;
+    font-size: 1.2em;
+}
+
+.buttonDialogDiv {
+    display: flex;
+    column-gap: 2%;
+}
+
+.buttonDialogDiv .buttonDialog {
+    flex: 1;
+    width: 100%;
+    font-size: 1em;
+    border: 1px solid rgb(24, 23, 23);
+    background-color: rgb(24, 23, 23);
+    color: white;
+    padding: 2%;
+    border-radius: 5px;
+}  
+  
+.buttonDialogDiv .buttonDialog:hover {
+    background-color: rgb(51, 50, 50);
+    border: 1px solid rgb(51, 50, 50);
+}
+
+.custom-confirm-content button {
+    margin-right: 2%;
+}
+
+/*END*/
+
 /*STYLE SUCCESS MESAGE*/
 
+.successWrapper {
+    align-items: center;
+    margin-top: 2%;
+}
+
 .successMessage {
+    margin: 3%;
     display: none;
     margin: auto;
     background-color: rgb(69, 128, 69);

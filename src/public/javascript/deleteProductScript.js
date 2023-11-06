@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputPrice = document.getElementById("price");
     const inputImage = document.getElementById("image");
     const imagePreview = document.getElementById("imagePreview");
+    const customConfirm = document.getElementById("customConfirm");
+    const confirmYesButton = document.getElementById("confirmYes");
+    const confirmNoButton = document.getElementById("confirmNo");
     let mealId;
     let mealTitle;
     let mealDescription;
@@ -16,8 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     form.addEventListener("submit", async function(event) {
       event.preventDefault();
-    
-      clearErrorMessages();
     
       const action = event.submitter.value;
     
@@ -29,8 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } 
     
-      if(action === "Save Product") {
-        handleSave(event);
+      if(action === "Delete Product") {
+        document.body.style.overflow = "hidden";
+        customConfirm.style.display = "flex";
       }
     
     });
@@ -66,73 +68,49 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
     }
-    
-    async function handleSave(event) {
-        const formTarget = event.target;
-        const formData = new FormData(formTarget);
-    
-        isFormValid = true;
-    
-        const requiredFields = ["mealType", "titleField", "description", "price"];
-    
-        requiredFields.forEach(fieldName => {
-            if(!formData.get(fieldName)) {
-                isFormValid = false;
-                displayValidationError(fieldName, "Field must not be empty");
-            }
-        });
-    
-        if(!isFormValid) {
-          return;
+
+    confirmYesButton.addEventListener("click", async function() {
+        customConfirm.style.display = "none";
+        document.body.style.overflow = "auto";
+        try {
+          await handleDelete();
+        } catch(error) {
+          console.error(error);
         }
-        
-        let typeValue = mealType.value;
+        form.reset();
+        imagePreview.src = "#";
+        imagePreview.style.display = 'none';
+    });
+      
+    confirmNoButton.addEventListener("click", async function() {
+        customConfirm.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
     
-        fetch(`/product/update/${typeValue}/${mealId}`, {
-          method: 'PUT',
-          body: formData,
+    async function handleDelete() {
+
+        let typeValue = mealType.value;
+
+        fetch(`/product/delete/${typeValue}/${mealId}`, {
+            method: 'DELETE',
         })
         .then(response => response.json())
         .then(data => {
-          if(data.message === 'Meal updated') {
-            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Meal successfully updated!";
-            successMessage.style.display = "block";
-          } else {
-            successMessage.style.backgroundColor = "red";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Update failed!";
-            successMessage.style.display = "block";
-          }
+            if(data.message === 'Meal deleted!') {
+                successMessage.style.backgroundColor = "rgb(69, 128, 69)";
+                const successText = successMessage.querySelector(".successMessageText");
+                successText.textContent = "Meal successfully deleted!";
+                successMessage.style.display = "block";
+            } else {
+                successMessage.style.backgroundColor = "red";
+                const successText = successMessage.querySelector(".successMessageText");
+                successText.textContent = "Deletion failed";
+                successMessage.style.display = "block";
+            }
         })
         .catch(error => {
-          console.log(error);
+            console.log(error);
         })
-    
-        setTimeout(function() {
-          successMessage.style.display = "none";
-        }, 3000);
-    }
-    
-    function displayValidationError(fieldName, message) {
-      const field = form.querySelector(`[name=${fieldName}]`);
-    
-      const errorDiv = document.createElement('div');
-      errorDiv.classList.add('errorMessage');
-      errorDiv.textContent = message;
-    
-      const existingError = field.parentElement.querySelector('.errorMessage');
-      if(existingError) {
-          field.parentElement.removeChild(existingError);
-      }
-    
-      field.parentElement.appendChild(errorDiv);
-    }
-    
-    function clearErrorMessages() {
-      const errorMessages = form.querySelectorAll('.errorMessage');
-      errorMessages.forEach(error => error.remove());
     }
     
 });

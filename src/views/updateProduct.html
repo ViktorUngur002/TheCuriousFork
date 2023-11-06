@@ -83,7 +83,7 @@
     
                 <div class="column">
                     <div class="textSearch">
-                        <input type="text" id="titleFromSearch" name="titleFromSearch" placeholder="Enter meal name" />
+                        <input type="text" id="titleFromSearch" enctype="multipart/form-data" name="titleFromSearch" placeholder="Enter meal name" />
                     </div>
     
                     <div class="searchButton">
@@ -109,7 +109,7 @@
                 <div class="pictureInput">
                     <div class="pictureDiv">
                         <label for="">Choose Picture</label>
-                        <input id="image" type="file" accept="picture/*" name="image"/>
+                        <input id="image" type="file" name="image"/>
                     </div>
                     <div class="pictureDiv">
                         <img id="imagePreview" src="#" alt="Preview">
@@ -120,12 +120,14 @@
                     <input type="submit" value="Save Product">
                 </div>
             </form>    
-            
+        </div>
+       </section>
+
+       <div class="successWrapper">
             <div id="successMessage" class="successMessage">
                 <p class="successMessageText"></p>
             </div>
         </div>
-       </section>
 
     <footer>
         <div class="footerContact">
@@ -147,5 +149,6 @@
     <script src="/javascript/pageModificationsScript.js"></script>
     <script src="/javascript/imagePreviewScript.js"></script>
     <script src="/javascript/updateProductScript.js"></script>
+
 </body>
 </html>

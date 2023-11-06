@@ -71,19 +71,19 @@
 
     <section class="mainSection">
         <div class="container">
-            <form action="" method="post" class="productAddForm" id="productAdd">
+            <form action="" method="post" class="productAddForm" id="productForm">
                 <label class="selectMeal" for="">Select Meal</label>
                 <div class="selectBox">
-                    <select name="" id="">
-                        <option value="mainCourse">Main Course</option>
-                        <option value="salad">Salad</option>
-                        <option value="dessert">Dessert</option>
+                    <select name="mealType" id="mealType">
+                        <option value="Main Course">Main Course</option>
+                        <option value="Salad">Salad</option>
+                        <option value="Dessert">Dessert</option>
                     </select>
                 </div>
     
                 <div class="column">
                     <div class="textSearch">
-                        <input type="text" name="title" placeholder="Enter meal name" />
+                        <input type="text" id="titleFromSearch" enctype="multipart/form-data" name="titleFromSearch" placeholder="Enter meal name" />
                     </div>
     
                     <div class="searchButton">
@@ -92,19 +92,24 @@
                 </div>
 
                 <div class="inputBox">
+                    <label for="">Title</label>
+                    <input id="titleField" type="text" name="titleField"/>
+                </div>
+
+                <div class="inputBox">
                     <label for="">Description</label>
-                    <input type="text" name="description"/>
+                    <input id="description" type="text" name="description"/>
                 </div>
 
                 <div class="inputBox">
                     <label for="">Price</label>
-                    <input type="text" name="price"/>
+                    <input id="price" type="text" name="price"/>
                 </div>
 
                 <div class="pictureInput">
                     <div class="pictureDiv">
                         <label for="">Choose Picture</label>
-                        <input id="picture" type="file" accept="picture/*" name="picture"/>
+                        <input id="image" type="file" name="image"/>
                     </div>
                     <div class="pictureDiv">
                         <img id="imagePreview" src="#" alt="Preview">
@@ -114,9 +119,15 @@
                 <div class="rowButton">
                     <input type="submit" value="Delete Product">
                 </div>
-            </form>     
+            </form>    
         </div>
        </section>
+
+       <div class="successWrapper">
+            <div id="successMessage" class="successMessage">
+                <p class="successMessageText"></p>
+            </div>
+        </div>
 
     <footer>
         <div class="footerContact">
@@ -137,5 +148,16 @@
     <script src="/javascript/cartScript.js"></script>
     <script src="/javascript/pageModificationsScript.js"></script>
     <script src="/javascript/imagePreviewScript.js"></script>
+    <script src="/javascript/deleteProductScript.js"></script>
+
+    <div id="customConfirm" class="customConfirm">
+        <div class="customConfirmContent">
+          <p>Are you sure you want to delete this product?</p>
+          <div class="buttonDialogDiv">
+            <button class="buttonDialog" id="confirmYes">Yes</button>
+            <button class="buttonDialog" id="confirmNo">No</button>
+          </div>
+        </div>
+    </div>
 </body>
 </html>

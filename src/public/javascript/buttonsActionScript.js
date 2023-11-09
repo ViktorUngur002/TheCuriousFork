@@ -4,6 +4,7 @@ const customConfirm = document.getElementById("customConfirm");
 const confirmYesButton = document.getElementById("confirmYes");
 const confirmNoButton = document.getElementById("confirmNo");
 const successMessage = document.getElementById("successMessage");
+const snackbar = document.getElementById("snackbar");
 let userId;
 
 form.addEventListener("submit", async function(event) {
@@ -121,23 +122,20 @@ async function handleSave(event) {
     .then(response => response.json())
     .then(data => {
       if(data.message === 'User updated') {
-        successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-        const successText = successMessage.querySelector(".successMessageText");
-        successText.textContent = "User successfully updated!";
-        successMessage.style.display = "block";
+        snackbar.className = "show";
+        snackbar.textContent = "User updated!";
       } else {
-        successMessage.style.backgroundColor = "red";
-        const successText = successMessage.querySelector(".successMessageText");
-        successText.textContent = "Update failed!";
-        successMessage.style.display = "block";
+        snackbar.className = "show";
+        snackbar.textContent = "Update failed!";
+        snackbar.style.backgroundColor = "red";
       }
     })
     .catch(error => {
       console.log(error);
     })
 
-    setTimeout(function() {
-      successMessage.style.display = "none";
+    setTimeout(function(){ 
+      snackbar.className = snackbar.className.replace("show", ""); 
     }, 3000);
 }
 

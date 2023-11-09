@@ -51,12 +51,12 @@
     color: white;
     border-radius: 6px;
     padding: 0 2%;
-    font-size: 1.2em;
+    font-size: .8em;
     margin-top: 2%;
 }
 
 .userDataForm .inputBox label {
-    font-size: 1.3em;
+    font-size: .8em;
 }
 
 .userDataForm .inputBox input:focus {
@@ -94,7 +94,7 @@
 .rightSection h3 {
     margin-top: 0;
     margin-left: 5%;
-    font-size: 1.8em;
+    font-size: 1.1em;
     font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
     color: black;
 }
@@ -108,7 +108,7 @@
     text-align: center;
     margin-top: 0;
     margin-left: 5%;
-    font-size: 1.8em;
+    font-size: 1.1em;
     font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
     color: black;
 }
@@ -124,9 +124,9 @@
 .cartQuantity {
     float: right;
     display: inline-block;
-    width: 50px;
-    padding: 8px 12px;
-    font-size: 16px;
+    width: 30px;
+    padding: 2px 3px;
+    font-size: .5em;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
@@ -160,7 +160,7 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    font-size: 1.5em;
+    font-size: .8em;
     font-weight: 500;
     padding-left: 0;
     color: white;
@@ -188,7 +188,7 @@
 .totalTitle{
     text-align: center;
     flex: 1;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 2%;
     color: black;
 }
@@ -210,7 +210,7 @@
 
 .buttonDiv .submitButton {
     width: 50%;
-    font-size: 1.8em;
+    font-size: 1.1em;
     padding-left: 0;
     background-color: rgb(60, 145, 60);
     border: 1px solid rgb(60, 145, 60);
@@ -231,7 +231,7 @@
     display: none;
     margin: auto;
     background-color: rgb(69, 128, 69);
-    width: 20%;
+    width: 30%;
     text-align: center;
     justify-content: center;
     padding: 1%;
@@ -240,9 +240,10 @@
 .successMessage p {
     text-align: center;
     color: white;
-    font-size: 1.2em;
+    font-size: .8em;
     padding: 0;
     margin: 2%;
+    width: 100%;
 }
 
 /*END*/

@@ -1,7 +1,9 @@
 const usersSection = document.getElementById("users");
+const orderSection = document.getElementById("orders");
 const customConfirm = document.getElementById("customConfirm");
 const confirmYesButton = document.getElementById("confirmYes");
 const confirmNoButton = document.getElementById("confirmNo");
+const snackbarUserAndOrder = document.getElementById("snackbar");
 let userId;
 let userIds = {};
 let userToDeleteId;
@@ -60,6 +62,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             handleDeleteUser(target);
             document.body.style.overflow = "hidden";
             customConfirm.style.display = "flex";
+        } else if(target.classList.contains("userOrders")) {
+            event.preventDefault();
+            handleGetOrders(target);
+        }
+    });
+
+    orderSection.addEventListener("click", function(event) {
+        const target = event.target;
+        if(target.classList.contains("deleteOrder")) {
+            event.preventDefault();
+            handleDeleteOrder(target);
         }
     });
 });
@@ -108,29 +121,26 @@ async function handleSaveUser(button) {
     .then(data => {
         successMessage = userDiv.querySelector(".successMessage");
         if(data.message === 'User updated') {
-            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "User successfully updated!";
-            successMessage.style.display = "block";
+            snackbarUserAndOrder.className = "show";
+            snackbarUserAndOrder.textContent = "User updated!";
         } else {
-            successMessage.style.backgroundColor = "red";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Update failed!";
-            successMessage.style.display = "block";
+            snackbarUserAndOrder.className = "show";
+            snackbarUserAndOrder.textContent = "Update failed!";
+            snackbarUserAndOrder.style.backgroundColor = "red";
         }
     })
     .catch(error => {
         console.log(error);
     })
 
-    setTimeout(function() {
-        successMessage.style.display = "none";
-    }, 3000);   
+    setTimeout(function(){ 
+        snackbarUserAndOrder.className = snackbarUserAndOrder.className.replace("show", ""); 
+    }, 3000);  
 }
 
 //END UPDATE
 
-//DELETE
+//DELETE USER
 
 function handleDeleteUser(button) {
     const userDiv = button.closest(".container");
@@ -175,7 +185,86 @@ async function handleDelete() {
     })
 }
 
-//END DELETE
+//END DELETE USER
+
+//GET ORDERS
+
+async function handleGetOrders(button) {
+    const userDiv = button.closest(".container");
+    const email = userDiv.querySelector(".email");
+    orderSection.innerHTML = "";
+
+    try {
+        const response = await fetch(`/userOrders/${email.textContent}`);
+
+        if(response.ok) {
+            const orderList = await response.json();
+            
+            orderList.forEach(order => {
+                let orderPhoneNumber = order.customerPhoneNumber;
+                let orderId = order._id;
+                let orderAddress = order.customerAddress;
+                let orderAddressNumber = order.customerAddressNumber;
+                let orderDate = order.dateOrdered;
+                let orderTotal = order.totalPrice.toFixed(2);
+
+                const date = new Date(orderDate);
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                const formattedDate = date.toLocaleDateString(undefined, options);
+
+                let orderItems = order.orderItems;
+
+                const itemHTMLArray = [];
+
+                orderItems.forEach(item => {
+                    let itemTitle = item.title;
+                    let itemPrice = item.price;
+                    let itemQuantity = item.quantity;
+
+                    const itemDivElement = ItemDiv(itemTitle, itemPrice, itemQuantity);
+                    itemHTMLArray.push(itemDivElement);
+                });
+
+                const allItems = itemHTMLArray.join('');
+
+                const orderDivElement = OrderDiv(orderPhoneNumber, orderAddress, orderAddressNumber, formattedDate, orderTotal, orderId, allItems);
+                const newOrderElement = document.createElement('div');
+                newOrderElement.innerHTML = orderDivElement;
+                orderSection.appendChild(newOrderElement);
+
+            });
+        }
+    } catch(error) {
+        console.error(error);
+    }
+}
+
+//END GET ORDERS
+
+//DELETE ORDERS
+
+async function handleDeleteOrder(button) {
+    const orderDiv = button.closest(".container");
+    const orderId = orderDiv.querySelector(".hiddenId");
+
+    fetch(`/order/delete/${orderId.textContent}`, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.message === 'Order deleted!') {
+          console.log('Order successfully deleted!');
+          location.reload(true);
+        } else {
+          console.log('Deletion failed');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
+}
+
+//END DELETE ORDERS
 
 function displayValidationError(form, fieldName, message) {
     const field = form.querySelector(`[name=${fieldName}]`);
@@ -230,13 +319,50 @@ function UserDiv(username, email, phoneNumber, address, addressNumber) {
                 <div class="buttonDeleteUser">
                         <input type="submit" class="userDeletion" value="Delete User">
                 </div>
+                <div class="buttonShowOrders">
+                        <input type="submit" class="userOrders" value="Show Orders">
+                </div>
             </div>
         </form>
-
-        <div id="successMessage" class="successMessage">
-            <p class="successMessageText"></p>
-        </div>
     </div>
 </div>
     `;
+}
+
+function OrderDiv(orderPhoneNumber, orderAddress, orderAddressNumber, orderDate, orderTotal, orderId, allItems) {
+    return `<div class="container">
+    <div class="leftSectionOrder">
+        <h3>Order info</h3>
+        <span class="hiddenId">${orderId}</span>
+        <div class="orderInfo">
+            <h3>Phone Number</h3>
+            <p class="orderPhoneNumber">${orderPhoneNumber}</p>
+            <h3>Address</h3>
+            <p class="orderAddress">${orderAddress}</p>
+            <p class="orderAddressNumber">${orderAddressNumber}</p>
+            <h3>Date</h3>
+            <p class="orderDate">${orderDate}</p>
+            <h3>Products</h3>
+                <div class="items">
+                    ${allItems}
+                </div>
+            <h3>Price</h3>
+            <p class="orderTotal">${orderTotal}</p>
+        </div>
+    </div>
+    <div class="rightSectionOrder">
+        <div class="buttonDeleteOrder">
+            <input type="submit" class="deleteOrder" value="Delete Order">
+        </div>
+    </div>
+    </div>`;
+}
+
+function ItemDiv(itemTitle, itemPrice, itemQuantity) {
+    return `<div class="itemContainer">
+        <p class="itemTitle">${itemTitle}</p>
+        <p class="itemPrice">$${itemPrice}</p>
+        <p class="itemQuantity">${itemQuantity}</p>
+    </div>
+    <hr class="delimiter">`;
 }

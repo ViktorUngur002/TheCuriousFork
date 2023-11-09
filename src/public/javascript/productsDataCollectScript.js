@@ -2,6 +2,7 @@ const form = document.getElementById("productAdd");
 const sectionInput = document.getElementById('section');
 const myImage = document.getElementById("image");
 const previewImage = document.getElementById("imagePreview");
+const snackbarMeal = document.getElementById("snackbar");
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -42,17 +43,14 @@ form.addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
         if(data.success) {
-            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Meal successfully added!";
-            successMessage.style.display = "block";
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Meal added!";
         } else if (data.error && data.error.includes('Meal already exists')) {
             displayUserExistsMessage(data.error);
         } else {
-            successMessage.style.backgroundColor = "red";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Adding product failed!";
-            successMessage.style.display = "block";
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Adding failed!";
+            snackbarMeal.style.backgroundColor = "red";
         }
     })
     .catch(error => {
@@ -63,8 +61,8 @@ form.addEventListener('submit', function(event) {
     previewImage.src = "#";
     previewImage.style.display = 'none';
 
-    setTimeout(function() {
-        successMessage.style.display = "none";
+    setTimeout(function(){ 
+        snackbar.className = snackbar.className.replace("show", ""); 
     }, 3000);
 
 });

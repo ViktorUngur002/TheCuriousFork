@@ -8,7 +8,6 @@ const updateMeal = async (req, res) => {
 
     const { titleField, description, price } = req.body;
 
-    // Check if a file is provided in the request
     const file = req.file;
     let newImage = null;
 

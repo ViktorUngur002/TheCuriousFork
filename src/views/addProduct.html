@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/style/styleProducts.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleSnackConfirm.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,9 +92,9 @@
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Description</label>
-                    <input type="text" name="description"/>
-                </div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"></textarea>
+                </div>                
 
                 <div class="inputBox">
                     <label for="">Price</label>
@@ -115,11 +116,11 @@
                 </div>
             </form>    
             
-            <div id="successMessage" class="successMessage">
-                <p class="successMessageText"></p>
-            </div>
+            
         </div>
        </section>
+
+       <div id="snackbar"></div>
 
     <footer>
         <div class="footerContact">
@@ -136,6 +137,8 @@
             <h2>Copyright &copy; 2023, The Curious Fork. All rights reserved</h2>
         </div>
     </footer>
+
+    
 
     <script src="/javascript/cartScript.js"></script>
     <script src="/javascript/pageModificationsScript.js"></script>

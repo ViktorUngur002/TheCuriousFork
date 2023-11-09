@@ -29,9 +29,9 @@ const handleNewOrder = async (req, res) => {
         
 
         const orderItemsIdsResolved = await orderItemsIds;
-
+        
         const newOrder = await Order.create({
-            orderItemsIdsResolved,
+            orderItems: orderItemsIdsResolved,
             customerName,
             customerEmail,
             customerPhoneNumber,

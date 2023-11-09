@@ -27,8 +27,17 @@
     transition: 0.2s;
 }
 
+.delimiter {
+    border: 1px solid black;
+    width:  80%;
+}
+
 .container:hover {
     transform: scale(1.02);
+}
+
+.orderInfo p {
+    margin-left: 7%;
 }
 
 /*USER PART*/
@@ -38,9 +47,10 @@
 }
 
 .leftSectionUser h3 {
+    margin-top: 2%;
     margin-top: 0;
     margin-left: 2%;
-    font-size: 1.2em;
+    font-size: .68em;
     font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
     color: black;
 }
@@ -56,20 +66,20 @@
 
 .rightSectionUser .userDataForm .inputBox input {
     position: relative;
-    height: 50px;
+    height: 30px;
     width: 100%;
     outline: none;
     background-color: rgb(56, 54, 54);
     border: 1px solid rgb(56, 54, 54);
     border-radius: 6px;
     padding: 0 2%;
-    font-size: 1.2em;
+    font-size: .8em;
     color: white;
     margin-top: 2%;
 }
 
 .rightSectionUser .userDataForm .inputBox label {
-    font-size: 1.3em;
+    font-size: .7em;
 }
 
 .rightSectionUser .userDataForm .inputBox input:focus {
@@ -95,13 +105,16 @@
 }
 
 .rightSectionUser .userDataForm .buttons .buttonDeleteUser {
-     flex: 1;
-    
+     flex: 1;   
+}
+
+.rightSectionUser .userDataForm .buttons .buttonShowOrders {
+    flex: 1;   
 }
 
 .rightSectionUser .userDataForm .buttons .buttonSave input {
     width: 100%;
-    font-size: 1.5em;
+    font-size: .8em;
     font-weight: 500;
     padding-left: 0;
     background: #16a085;
@@ -115,11 +128,25 @@
 
 .rightSectionUser .userDataForm .buttons .buttonDeleteUser input {
     width: 100%;
-    font-size: 1.5em;
+    font-size: .8em;
     font-weight: 500;
     padding-left: 0;
     background: red;
     border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 1%;
+    color: white;
+}
+
+.rightSectionUser .userDataForm .buttons .buttonShowOrders input {
+    width: 100%;
+    font-size: .8em;
+    font-weight: 500;
+    padding-left: 0;
+    background: #19c74a;
+    border: 1px solid #19c74a;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 4%;
@@ -137,9 +164,18 @@
     border: 1px solid rgb(190, 46, 46);
 }
 
+.rightSectionUser .userDataForm .buttons .buttonShowOrders input:hover{
+    background: #19a240;;
+    border: 1px solid #19a240;
+}
+
 /*END USER PART*/
 
 /*ORDER DATA PART*/
+
+.hiddenId {
+    display: none;
+}
 
 .leftSectionOrder {
     flex: 2;
@@ -148,7 +184,7 @@
 .leftSectionOrder h3 {
     margin-top: 0;
     margin-left: 5%;
-    font-size: 1.8em;
+    font-size: 1.3em;
     font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
     color: black;
 }
@@ -160,14 +196,14 @@
 .rightSectionOrder h3 {
     margin-top: 0;
     margin-left: 5%;
-    font-size: 1.8em;
+    font-size: 1.3em;
     font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
     color: black;
 }
 
 .rightSectionOrder .buttonDeleteOrder input {
     width: 100%;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 500;
     padding-left: 0;
     background: red;
@@ -212,7 +248,7 @@
 .customConfirmContent p {
     margin: auto;
     margin-bottom: 15%;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .buttonDialogDiv {
@@ -248,7 +284,7 @@
     display: none;
     margin: auto;
     background-color: rgb(69, 128, 69);
-    width: 20%;
+    width: 30%;
     text-align: center;
     justify-content: center;
     padding: 1%;
@@ -257,9 +293,10 @@
 .successMessage p {
     text-align: center;
     color: white;
-    font-size: 1.2em;
+    font-size: .8em;
     padding: 0;
     margin: 2%;
+    width: 100%;
 }
 
 /*END*/

@@ -109,8 +109,6 @@ function handle_changeItemQuantity() {
   }
 
   this.value = itemQuantity;
-    
-    //this.value = Math.floor(this.value);
 
   update();
 }

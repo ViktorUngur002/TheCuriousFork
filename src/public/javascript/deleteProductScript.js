@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("productForm");
-    const successMessage = document.getElementById("successMessage");
     const mealType = document.getElementById("mealType");
     const titleFromSearch = document.getElementById("titleFromSearch")
     const inputTitle = document.getElementById("titleField");
@@ -11,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const customConfirm = document.getElementById("customConfirm");
     const confirmYesButton = document.getElementById("confirmYes");
     const confirmNoButton = document.getElementById("confirmNo");
+    const snackbarMeal = document.getElementById("snackbar");
     let mealId;
     let mealTitle;
     let mealDescription;
@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function(event) {
       event.preventDefault();
     
+      clearErrorMessages();
+
       const action = event.submitter.value;
     
       if (action === "Search") {
@@ -97,20 +99,41 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if(data.message === 'Meal deleted!') {
-                successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-                const successText = successMessage.querySelector(".successMessageText");
-                successText.textContent = "Meal successfully deleted!";
-                successMessage.style.display = "block";
+                snackbarMeal.className = "show";
+                snackbarMeal.textContent = "Meal deleted!";
             } else {
-                successMessage.style.backgroundColor = "red";
-                const successText = successMessage.querySelector(".successMessageText");
-                successText.textContent = "Deletion failed";
-                successMessage.style.display = "block";
+              snackbarMeal.className = "show";
+              snackbarMeal.textContent = "Delete failed!";
+              snackbarMeal.style.backgroundColor = "red";
             }
         })
         .catch(error => {
             console.log(error);
         })
+
+        setTimeout(function(){ 
+          snackbar.className = snackbar.className.replace("show", ""); 
+        }, 3000);
+    }
+
+    function displayValidationError(fieldName, message) {
+      const field = form.querySelector(`[name=${fieldName}]`);
+    
+      const errorDiv = document.createElement('div');
+      errorDiv.classList.add('errorMessage');
+      errorDiv.textContent = message;
+    
+      const existingError = field.parentElement.querySelector('.errorMessage');
+      if(existingError) {
+          field.parentElement.removeChild(existingError);
+      }
+    
+      field.parentElement.appendChild(errorDiv);
+    }
+    
+    function clearErrorMessages() {
+      const errorMessages = form.querySelectorAll('.errorMessage');
+      errorMessages.forEach(error => error.remove());
     }
     
 });

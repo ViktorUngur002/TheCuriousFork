@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("productForm");
-    const successMessage = document.getElementById("successMessage");
     const mealType = document.getElementById("mealType");
     const titleFromSearch = document.getElementById("titleFromSearch")
     const inputTitle = document.getElementById("titleField");
@@ -8,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputPrice = document.getElementById("price");
     const inputImage = document.getElementById("image");
     const imagePreview = document.getElementById("imagePreview");
+    const snackbarMeal = document.getElementById("snackbar");
     let mealId;
     let mealTitle;
     let mealDescription;
@@ -95,23 +95,20 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
           if(data.message === 'Meal updated') {
-            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Meal successfully updated!";
-            successMessage.style.display = "block";
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Meal updated!";
           } else {
-            successMessage.style.backgroundColor = "red";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Update failed!";
-            successMessage.style.display = "block";
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Update failed!";
+            snackbarMeal.style.backgroundColor = "red";
           }
         })
         .catch(error => {
           console.log(error);
         })
     
-        setTimeout(function() {
-          successMessage.style.display = "none";
+        setTimeout(function(){ 
+          snackbar.className = snackbar.className.replace("show", ""); 
         }, 3000);
     }
     

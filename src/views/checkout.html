@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleSnackConfirm.css">
     <link rel="stylesheet" type="text/css" href="/style/styleCheckOut.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
@@ -25,7 +26,6 @@
             </div>
             <div>
                 <a class="signIn" href="signin.html">Sign in</a>
-                <span class="quantity hidden">0</span>
                 <a href="aboutus.html">About Us</a>
                 <div class="dropdown">
                     <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
@@ -90,9 +90,7 @@
         <button id="submitButton" class="submitButton">Order</button>
     </div>
 
-    <div id="successMessage" class="successMessage">
-        <p class="successMessageText"></p>
-    </div>
+    <div id="snackbar">Order placed!</div>
 
     <footer>
         <div class="footerContact">

@@ -1,4 +1,5 @@
 const signInButton = document.querySelector('.signIn');
+signInButton.style.opacity = 0;
 let isAdmin;
 
 async function isAuthenticated() {
@@ -13,6 +14,7 @@ async function isAuthenticated() {
             isAdmin = data.isAdmin;
             return true;
         } else {
+            signInButton.style.opacity = 1;
             return false;
         }
     } catch (error) {
@@ -25,7 +27,6 @@ async function updateDisplay() {
     
     if(signInButton) {
         if(await isAuthenticated()) {
-            signInButton.style.opacity = 0;
             signInButton.textContent = 'Profile';
             signInButton.href = '/profile.html';
             signInButton.style.opacity = 1;

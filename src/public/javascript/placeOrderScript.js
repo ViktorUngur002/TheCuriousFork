@@ -9,7 +9,6 @@ if(allProductsPricesJSON) {
 
 submitButton.addEventListener("click", function(event) {
 
-    //console.log("clicked");
     event.preventDefault();
 
     clearErrorMessages();
@@ -64,21 +63,18 @@ submitButton.addEventListener("click", function(event) {
     .then(response => response.json())
     .then(data => {
         if(data.success) {
-            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Order successfuly made!";
-            successMessage.style.display = "block";
-            setTimeout(function() {
-                successMessage.style.display = "none";
-            }, 2000);
+            snackbar.className = "show";
+            snackbar.textContent = "Order placed!";
+            setTimeout(function(){ 
+                snackbar.className = snackbar.className.replace("show", ""); 
+            }, 3000);
             setTimeout(function() {
                 window.location.href = '/homepage.html';
             }, 3000);
         } else {
-            successMessage.style.backgroundColor = "red";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Order failed!";
-            successMessage.style.display = "block";
+            snackbar.className = "show";
+            snackbar.textContent = "Order failed!";
+            snackbar.style.backgroundColor = "red";
         }
     })
     .catch(error => {

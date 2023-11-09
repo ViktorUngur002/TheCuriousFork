@@ -23,9 +23,9 @@ const protect = async (req, res, next) => {
 };
 
 const isAdmin = async (req, res, next) => {
-  // Assuming your user data has an "isAdmin" field in the database
+  
   if (req.user && req.user.isAdmin) {
-    next(); // User is an admin, proceed to the next middleware/route
+    next();
   } else {
     res.status(403).json({ error: 'Not authorized, admin access required' });
   }

@@ -1,7 +1,10 @@
 const form = document.getElementById("productAdd");
 const sectionInput = document.getElementById('section');
+const myImage = document.getElementById("image");
+const previewImage = document.getElementById("imagePreview");
+const snackbarMeal = document.getElementById("snackbar");
 
-document.getElementById('submitButton').addEventListener('click', function(event) {
+form.addEventListener('submit', function(event) {
     event.preventDefault();
 
     clearErrorMessages();
@@ -10,10 +13,10 @@ document.getElementById('submitButton').addEventListener('click', function(event
     const formData = new FormData(formTarget);
 
     isFormValid = true;
-    const requiredFields = ["mealType", "title", "description", "price", "image"];
+    const requiredFields = ["mealType", "title", "description", "price"];
 
     if(sectionInput.style.display === 'block') {
-        requiredFields.push("section");
+        requiredFields.append("section");
     }
 
     requiredFields.forEach(fieldName => {
@@ -24,46 +27,43 @@ document.getElementById('submitButton').addEventListener('click', function(event
     });
 
     const imageInput = document.getElementById('image');
-    const imageFile = imageInput.files[0];
-
-    if (imageFile) {
-        formData.append("image", imageFile);
-    } else {
-        isFormValid = false;
+    if(imageInput.files.length === 0) {
+        displayValidationError('image', "Field must not be empty");
     }
 
     if(!isFormValid) {
         return;
     }
 
-    const formDataJson = {};
-    formData.forEach((value, key) => {
-        formDataJson[key] = value;
-    });
 
     fetch('/addProducts', {
         method: 'POST',
-        body: JSON.stringify(formDataJson),
-        headers: {
-        'Content-Type': 'application/json'
-        }
+        body: formData,
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.success);
         if(data.success) {
-            window.location.href = '/homepage.html';
-        } else if (data.error && data.error.includes('User already exists')) {
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Meal added!";
+        } else if (data.error && data.error.includes('Meal already exists')) {
             displayUserExistsMessage(data.error);
+        } else {
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Adding failed!";
+            snackbarMeal.style.backgroundColor = "red";
         }
     })
     .catch(error => {
         console.error(error);
     });
 
-    setTimeout(function() {
-        successMessage.style.display = "none";
-      }, 3000);
+    form.reset();
+    previewImage.src = "#";
+    previewImage.style.display = 'none';
+
+    setTimeout(function(){ 
+        snackbar.className = snackbar.className.replace("show", ""); 
+    }, 3000);
 
 });
 
@@ -91,13 +91,6 @@ function displayUserExistsMessage(errorMessage) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('errorMessageExists');
     messageDiv.textContent = errorMessage;
-
-    const signInLink = document.createElement('a');
-    signInLink.classList.add('signInLinnk');
-    signInLink.textContent = 'Go to Sign In';
-    signInLink.href = 'signin.html';
-
-    messageDiv.appendChild(signInLink);
 
     form.appendChild(messageDiv);
 }

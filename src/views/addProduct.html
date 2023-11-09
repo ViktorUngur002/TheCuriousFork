@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/style/styleProducts.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleSnackConfirm.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +71,7 @@
 
     <section class="mainSection">
         <div class="container">
-            <form action="/addProducts" method="post" class="productAddForm" id="productAdd">
+            <form action="/addProducts" method="post" enctype="multipart/form-data" class="productAddForm" id="productAdd">
                 <label class="selectMeal" for="">Select Meal</label>
                 <div class="selectBox">
                     <select name="mealType" id="mealType">
@@ -91,9 +92,9 @@
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Description</label>
-                    <input type="text" name="description"/>
-                </div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"></textarea>
+                </div>                
 
                 <div class="inputBox">
                     <label for="">Price</label>
@@ -103,7 +104,7 @@
                 <div class="pictureInput">
                     <div class="pictureDiv">
                         <label for="">Choose Picture</label>
-                        <input id="image" type="file" accept="picture/*" name="image"/>
+                        <input id="image" type="file" name="image"/>
                     </div>
                     <div class="pictureDiv">
                         <img id="imagePreview" src="#" alt="Preview">
@@ -115,11 +116,11 @@
                 </div>
             </form>    
             
-            <div id="successMessage" class="successMessage">
-                <p class="successMessageText"></p>
-            </div>
+            
         </div>
        </section>
+
+       <div id="snackbar"></div>
 
     <footer>
         <div class="footerContact">
@@ -137,9 +138,12 @@
         </div>
     </footer>
 
+    
+
     <script src="/javascript/cartScript.js"></script>
     <script src="/javascript/pageModificationsScript.js"></script>
     <script src="/javascript/imagePreviewScript.js"></script>
     <script src="/javascript/showSectionScript.js"></script>
+    <script src="/javascript/productsDataCollectScript.js"></script>
 </body>
 </html>

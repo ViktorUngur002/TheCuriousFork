@@ -1,0 +1,249 @@
+.titleWrapper {
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+
+.welcomeTitle {
+    color: white;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    font-size: 5em;
+    text-align: center;
+}
+
+.mainSection {
+    display: flex;
+}
+
+.cartContent {
+    flex: 1;
+}
+
+.userData {
+    flex: 1;
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 2%;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.userDataForm .column {
+    display: flex;
+    column-gap: 2%;
+}
+
+
+.userDataForm .inputBox {
+    width: 100%;
+    margin-top: 3%;
+}
+
+.userDataForm .inputBox input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    background-color: rgb(56, 54, 54);
+    border: 1px solid rgb(56, 54, 54);
+    color: white;
+    border-radius: 6px;
+    padding: 0 2%;
+    font-size: .8em;
+    margin-top: 2%;
+}
+
+.userDataForm .inputBox label {
+    font-size: .8em;
+}
+
+.userDataForm .inputBox input:focus {
+    border-color: #16a085;
+    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+}
+
+.containerProducts {
+    display: flex;
+    padding: 1%;
+    background-color: rgb(129, 127, 127);
+    margin: 2% 2% 2% 2%;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+.leftSection {
+    flex: 1;
+}
+
+.leftSection img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+}
+
+.rightSection {
+    flex: 2;
+}
+
+.rightSection h3 {
+    margin-top: 0;
+    margin-left: 5%;
+    font-size: 1.1em;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.priceAndOrder {
+    flex: 0.5;
+    position: relative;
+}
+
+.priceAndOrder h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-left: 5%;
+    font-size: 1.1em;
+    font-family: 'Dela Gothic One', Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+/*.cartQuantity{
+    border: 1px solid rgb(151, 148, 148);
+    outline-color: rgb(151, 148, 148);
+    width: 2.4rem;
+    text-align: center;
+    font-size: 1rem;
+}*/
+
+.cartQuantity {
+    float: right;
+    display: inline-block;
+    width: 30px;
+    padding: 2px 3px;
+    font-size: .5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .cartQuantity:hover,
+  .cartQuantity:focus {
+    border-color: #2d3641;
+    box-shadow: 0 0 5px rgba(42, 54, 66, 0.5);
+    outline: none;
+  }
+  
+  .cartQuantity::placeholder {
+    color: #aaa;
+  }
+  
+  .cartQuantity::-webkit-inner-spin-button,
+  .cartQuantity::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+  
+  .cartQuantity:focus {
+    outline: none;
+  }
+
+.priceAndOrder button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: .8em;
+    font-weight: 500;
+    padding-left: 0;
+    color: white;
+    background-color: rgb(182, 29, 29);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 4%;
+    padding: 3%;
+}
+
+.priceAndOrder button:hover{
+    background-color: rgb(136, 26, 26);
+}
+
+.total{
+    display: flex;
+    justify-content: center;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    background-color: rgb(129, 127, 127);
+    border-radius: 20px;
+    width: 20%;
+}
+.totalTitle{
+    text-align: center;
+    flex: 1;
+    font-size: 1rem;
+    margin: 2%;
+    color: black;
+}
+.totalPrice{
+    text-align: left;
+    flex: 1;
+    padding: 1%;
+    margin: 2%;
+    margin-left: 2rem;
+    color: black;
+}
+
+.buttonDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonDiv .submitButton {
+    width: 50%;
+    font-size: 1.1em;
+    padding-left: 0;
+    background-color: rgb(60, 145, 60);
+    border: 1px solid rgb(60, 145, 60);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 4%;
+    padding: 1%;
+}
+
+.buttonDiv .submitButton:hover {
+    background-color: green;
+}
+
+/*STYLE SUCCESS MESAGE*/
+
+.successMessage {
+    display: none;
+    margin: auto;
+    background-color: rgb(69, 128, 69);
+    width: 30%;
+    text-align: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.successMessage p {
+    text-align: center;
+    color: white;
+    font-size: .8em;
+    padding: 0;
+    margin: 2%;
+    width: 100%;
+}
+
+/*END*/

@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
     <link rel="stylesheet" type="text/css" href="/style/styleProducts.css">
     <link rel="stylesheet" type="text/css" href="/style/styleSearchBar.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleSnackConfirm.css">
     <link rel="stylesheet" type="text/css" href="/style/footer.css">
     <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
     <link rel="stylesheet" type="text/css" href="/style/body.css">
@@ -83,7 +84,7 @@
     
                 <div class="column">
                     <div class="textSearch">
-                        <input type="text" id="titleFromSearch" name="titleFromSearch" placeholder="Enter meal name" />
+                        <input type="text" id="titleFromSearch" enctype="multipart/form-data" name="titleFromSearch" placeholder="Enter meal name" />
                     </div>
     
                     <div class="searchButton">
@@ -97,9 +98,9 @@
                 </div>
 
                 <div class="inputBox">
-                    <label for="">Description</label>
-                    <input id="description" type="text" name="description"/>
-                </div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"></textarea>
+                </div>  
 
                 <div class="inputBox">
                     <label for="">Price</label>
@@ -109,7 +110,7 @@
                 <div class="pictureInput">
                     <div class="pictureDiv">
                         <label for="">Choose Picture</label>
-                        <input id="image" type="file" accept="picture/*" name="image"/>
+                        <input id="image" type="file" name="image"/>
                     </div>
                     <div class="pictureDiv">
                         <img id="imagePreview" src="#" alt="Preview">
@@ -120,12 +121,10 @@
                     <input type="submit" value="Save Product">
                 </div>
             </form>    
-            
-            <div id="successMessage" class="successMessage">
-                <p class="successMessageText"></p>
-            </div>
         </div>
        </section>
+
+       <div id="snackbar"></div>
 
     <footer>
         <div class="footerContact">
@@ -147,5 +146,6 @@
     <script src="/javascript/pageModificationsScript.js"></script>
     <script src="/javascript/imagePreviewScript.js"></script>
     <script src="/javascript/updateProductScript.js"></script>
+
 </body>
 </html>

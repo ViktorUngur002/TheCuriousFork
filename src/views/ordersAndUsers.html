@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style/navigationBar.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleOrdersAndUsers.css">
+    <link rel="stylesheet" type="text/css" href="/style/styleSnackConfirm.css">
+    <link rel="stylesheet" type="text/css" href="/style/footer.css">
+    <link rel="stylesheet" type="text/css" href="/style/body.css">
+    <link rel="stylesheet" type="text/css" href="/style/cartStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/logo.jpg">
+    <title>The Curious Fork</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/images/logo.jpg" alt="">
+                <h1 class="title">The Curious Fork</h1>
+            </div>
+            <div>
+                <a class="signIn" href="signin.html">Sign in</a>
+                <div class="shopping">
+                    <a id="cartIcon">
+                        <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+                        <span class="quantity hidden">0</span>
+                    </a>
+                </div>
+                <div class="cart">
+                    <div class="cartTitleContainer">
+                        <h2 class="cartTitle">Your Cart</h2>
+                    </div>
+    
+                    <!-- CONTENT  -->
+                    <div class="cartContent">
+    
+    
+                    </div>
+    
+                    <!-- TOTAL   -->
+                    <div class="total">
+                        <div class="totalTitle">Total</div>
+                        <div class="totalPrice">$0</div>
+                    </div>
+                    <!-- BUY BUTTON  -->
+                    <button type="button" class="btnBuy">Buy Now</button>
+                    <!-- CART CLOSE  -->
+                    <i class='bx bx-x' id="cartClose"></i>
+                </div>
+                <a href="aboutus.html">About Us</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="salads.html">Salads</a>
+                        <a href="maincourse.html">Main Course</a>
+                        <a href="desserts.html">Desserts</a>
+                    </div>
+                </div>
+                <a href="homepage.html">Home</a>
+            
+            </div>
+        </nav>
+    </header>
+
+   <section class="mainSection">
+        <div class="users" id="users">
+        </div>
+        <div class="orders" id="orders">
+            
+        </div>
+   </section>
+
+   <div id="snackbar"></div>
+
+    <footer>
+        <div class="footerContact">
+            <h2>Contact:</h2>
+            <ul>
+                <li>Tel: (959) 411-4954</li>
+                <li>Mobile phone: (959) 867-1917</li>
+                <li>Address: 72 Morris Street, New York, NY 10016</li>
+                <li>e-mail: info@curious.fork.com</li>
+            </ul>
+        </div>
+
+        <div class="company">
+            <h2>Copyright &copy; 2023, The Curious Fork. All rights reserved</h2>
+        </div>
+    </footer>
+
+    <div id="customConfirm" class="customConfirm">
+        <div class="customConfirmContent">
+          <p>Are you sure you want to delete this account?</p>
+          <div class="buttonDialogDiv">
+            <button class="buttonDialog" id="confirmYes">Yes</button>
+            <button class="buttonDialog" id="confirmNo">No</button>
+          </div>
+        </div>
+    </div>
+
+    <script src="/javascript/cartScript.js"></script>
+    <script src="/javascript/pageModificationsScript.js"></script>
+    <script src="/javascript/userAndOrderScript.js"></script>
+</body>
+</html>

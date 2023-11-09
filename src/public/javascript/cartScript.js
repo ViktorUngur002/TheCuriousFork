@@ -1,7 +1,7 @@
 const cartIcon = document.querySelector("#cartIcon");
 const cart = document.querySelector(".cart");
 const closeCart = document.querySelector("#cartClose");
-const quantity = document.querySelector(".quantity");
+const snackbar = document.getElementById("snackbar");
 
 cartIcon.addEventListener("click", () => {
   cart.classList.add("active");
@@ -20,7 +20,6 @@ if (document.readyState == "loading") {
 function start() {
   loadCartFromStorage();
   updateTotal();
-  checkQuantityAndRemoveClass();
   addEvents();
 }
 
@@ -30,30 +29,32 @@ function update() {
   saveCartToStorage();
 }
 
-//remove items from cart
+
 function addEvents() {
-  let cartRemove_btns = document.querySelectorAll(".cartRemove");
-  cartRemove_btns.forEach((btn) => {
-    btn.addEventListener("click", handle_removeCartItem);
-  });
 
+  document.addEventListener("click", function (event) {
+    if(event.target.classList.contains("cartRemove")) {
+      handle_removeCartItem.call(event.target);
+    }
+  })
 
-//change item quantity
-let cartQuantity_inputs = document.querySelectorAll(".cartQuantity");
-  cartQuantity_inputs.forEach((input) => {
-    input.addEventListener("change", handle_changeItemQuantity);
-  });
+  document.addEventListener("change", function (event) {
+    if(event.target.classList.contains("cartQuantity")) {
+      handle_changeItemQuantity.call(event.target);
+    }
+  })
 
-//add item to cart
-let addCart_btns = document.querySelectorAll(".addCart");
-addCart_btns.forEach((btn) => {
-  btn.addEventListener("click", handle_addCartItem);
-});
+  document.addEventListener("click", function (event) {
+    if(event.target.classList.contains("addCart")) {
+      handle_addCartItem.call(event.target);
+    } 
+  })
 
-//buy order
-const buy_btn = document.querySelector(".btnBuy");
-buy_btn.addEventListener("click", handle_buyOrder);
-
+  document.addEventListener("click", function (event) {
+    if(event.target.classList.contains("btnBuy")) {
+      handle_buyOrder.call(event.target);
+    } 
+  })
 }
 
 // HANDLE EVENTS FUNCTIONS
@@ -75,41 +76,34 @@ function handle_addCartItem() {
   // handle item is already exist
   if (itemsAdded.find((el) => el.title == newToAdd.title)) {
     console.log(newToAdd.title);
-    alert("This Item Is Already Exist!");
     return;
   } else {
     itemsAdded.push(newToAdd);
   }
 
-  // Add product to cart
-  quantity.classList.remove("hidden");
-  let currentCount = parseInt(quantity.textContent);
-  let newCount = currentCount + 1;
-  quantity.textContent = newCount;
+  
   let cartBoxElement = CartBoxComponent(title, price, imgsrc);
   let newNode = document.createElement("div");
   newNode.innerHTML = cartBoxElement;
   const cartContent = cart.querySelector(".cartContent");
   cartContent.appendChild(newNode);
 
+  snackbar.className = "show";
+
+  
+  setTimeout(function(){ 
+    snackbar.className = snackbar.className.replace("show", ""); 
+  }, 3000);
+
   update();
 }
 
 function handle_removeCartItem() {
   this.parentElement.remove();
-  let currentCount = parseInt(quantity.textContent);
-  let newCount = currentCount - 1;
-  quantity.textContent = newCount;
-  
   itemsAdded = itemsAdded.filter(
     (el) => 
       el.title != this.parentElement.querySelector(".cartProductTitle").innerHTML
   );
-
-  if(itemsAdded.length === 0) {
-    quantity.innerHTML = "0";
-    quantity.classList.add("hidden");
-  }
 
   update();
 }
@@ -139,12 +133,9 @@ function handle_buyOrder() {
     return;
   }
 
-  const cartContent = cart.querySelector(".cartContent");
-  cartContent.innerHTML = "";
-  itemsAdded = [];
-  quantity.textContent = "0";
-  quantity.classList.add("hidden");
+
   update();
+  window.location.href = '/checkout.html';
 }
 
 //update and render functions
@@ -186,18 +177,8 @@ function CartBoxComponent(title, price, imgsrc) {
     </div>`;
 }
 
-function checkQuantityAndRemoveClass() {
-  let currentCount = parseInt(quantity.textContent);
-  if (currentCount > 0) {
-    quantity.classList.remove("hidden");
-  } else {
-    quantity.classList.add("hidden");
-  }
-}
-
 function saveCartToStorage() {
   localStorage.setItem('cart', JSON.stringify(itemsAdded));
-  localStorage.setItem('spanQuantity', JSON.stringify(quantity.textContent));
 }
 
 function loadCartFromStorage() {
@@ -205,7 +186,6 @@ function loadCartFromStorage() {
   const storedQuantity = localStorage.getItem('spanQuantity');
   if (storedCart) {
     itemsAdded = JSON.parse(storedCart);
-    quantity.textContent = JSON.parse(storedQuantity);
     renderCart();
   }
 }

@@ -222,7 +222,7 @@
     display: none;
     margin: auto;
     background-color: rgb(69, 128, 69);
-    width: 20%;
+    width: 30%;
     text-align: center;
     justify-content: center;
     padding: 1%;
@@ -231,9 +231,9 @@
 .successMessage p {
     text-align: center;
     color: white;
-    font-size: 1.2em;
+    font-size: .8em;
     padding: 0;
     margin: 2%;
+    width: 100%;
 }
-
 /*END*/

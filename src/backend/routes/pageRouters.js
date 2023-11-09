@@ -51,5 +51,12 @@ router.get('/deleteProduct(.html)?', protect, isAdmin, async(req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'views', 'deleteProduct.html'));
 });
 
+router.get('/checkout(.html)?', protect, async(req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'views', 'checkOut.html'));
+});
+
+router.get('/ordersAndUsers(.html)?', protect, isAdmin, async(req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'views', 'ordersAndUsers.html'));
+});
 
 module.exports = router;

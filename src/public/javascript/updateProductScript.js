@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("productForm");
-    const successMessage = document.getElementById("successMessage");
     const mealType = document.getElementById("mealType");
     const titleFromSearch = document.getElementById("titleFromSearch")
     const inputTitle = document.getElementById("titleField");
@@ -8,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputPrice = document.getElementById("price");
     const inputImage = document.getElementById("image");
     const imagePreview = document.getElementById("imagePreview");
+    const snackbarMeal = document.getElementById("snackbar");
     let mealId;
     let mealTitle;
     let mealDescription;
@@ -26,18 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
           await handleSearch();
         } catch (error) {
           console.error(error);
-        }
-
-        if(inputTitle && inputDescription && inputPrice && imagePreview && inputImage) {
-            inputTitle.value = mealTitle;
-            inputDescription.value = mealDescription;
-            inputPrice.value = mealPrice;
-            //inputImage.value = mealImage;
-            //console.log(mealImage);
-            const base64Image = mealImage.toString('base64');
-            const dataUrl = `data:image/jpeg;base64,${base64Image}`;
-            imagePreview.src = dataUrl;
-            imagePreview.style.display = 'block';
         }
       } 
     
@@ -62,6 +50,16 @@ document.addEventListener("DOMContentLoaded", function () {
             mealDescription = data.description;
             mealPrice = data.price;
             mealImage = data.image;
+
+            if(inputTitle && inputDescription && inputPrice && imagePreview && inputImage) {
+              inputTitle.value = mealTitle;
+              inputDescription.value = mealDescription;
+              inputPrice.value = mealPrice;
+              imagePreview.src = mealImage;
+              imagePreview.style.display = 'block';
+            }
+        } else {
+          displayValidationError("titleFromSearch", "Meal not found!");
         }
       } catch (error) {
         console.error(error);
@@ -74,15 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData(formTarget);
     
         isFormValid = true;
-
-        const imageInput = document.getElementById('image');
-        const imageFile = imageInput.files[0];
-
-        if (imageFile) {
-            formData.append("image", imageFile);
-        }
     
-        const requiredFields = ["titleField", "description", "price", "image"];
+        const requiredFields = ["mealType", "titleField", "description", "price"];
     
         requiredFields.forEach(fieldName => {
             if(!formData.get(fieldName)) {
@@ -94,42 +85,30 @@ document.addEventListener("DOMContentLoaded", function () {
         if(!isFormValid) {
           return;
         }
+        
+        let typeValue = mealType.value;
     
-        const formDataJson = {};
-        formData.forEach((value, key) => {
-            formDataJson[key] = value;
-        });
-
-        console.log(mealType.value);
-        let aux = mealType.value;
-    
-        fetch(`/product/update/${aux}/${mealId}`, {
+        fetch(`/product/update/${typeValue}/${mealId}`, {
           method: 'PUT',
-          body: JSON.stringify(formDataJson),
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          body: formData,
         })
         .then(response => response.json())
         .then(data => {
           if(data.message === 'Meal updated') {
-            successMessage.style.backgroundColor = "rgb(69, 128, 69)";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Meal successfully updated!";
-            successMessage.style.display = "block";
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Meal updated!";
           } else {
-            successMessage.style.backgroundColor = "red";
-            const successText = successMessage.querySelector(".successMessageText");
-            successText.textContent = "Update failed!";
-            successMessage.style.display = "block";
+            snackbarMeal.className = "show";
+            snackbarMeal.textContent = "Update failed!";
+            snackbarMeal.style.backgroundColor = "red";
           }
         })
         .catch(error => {
           console.log(error);
         })
     
-        setTimeout(function() {
-          successMessage.style.display = "none";
+        setTimeout(function(){ 
+          snackbar.className = snackbar.className.replace("show", ""); 
         }, 3000);
     }
     

@@ -10,50 +10,56 @@ const handleGetOneProduct = async (req, res) => {
         return res.status(400).json({ error: 'Empty search!' });
     }
 
-    if(mealType === 'Main Course') {
-        const {_id, title, description, price, image} = await MainCourse.findOne({ title:titleFromSearch });
+    try {
 
-        if(_id && title && description && price && image) {
-            res.status(200).json({
-                id: _id,
-                title,
-                description,
-                price,
-                image
-            });
-        } else {
-            res.status(400).json({ error:"Meal not found!" });
+        if(mealType === 'Main Course') {
+            const {_id, title, description, price, image} = await MainCourse.findOne({ title:titleFromSearch });
+
+            if(_id && title && description && price && image) {
+                res.status(200).json({
+                    id: _id,
+                    title,
+                    description,
+                    price,
+                    image
+                });
+            } else {
+                res.status(400).json({ error:"Meal not found!" });
+            }
+
+        } else if(mealType === 'Dessert') {
+            const {_id, title, description, price, image} = await Dessert.findOne({ title:titleFromSearch });
+
+            if(_id && title && description && price && image) {
+                res.status(200).json({
+                    id: _id,
+                    title,
+                    description,
+                    price,
+                    image
+                });
+            } else {
+                res.status(400).json({ error:"Meal not found!" });
+            }
+
+        } else if(mealType === 'Salad') {
+            const {_id, title, description, price, image} = await Salad.findOne({ title:titleFromSearch });
+
+            if(_id && title && description && price && image) {
+                res.status(200).json({
+                    id: _id,
+                    title,
+                    description,
+                    price,
+                    image
+                });
+            } else {
+                res.status(400).json({ error:"Meal not found!" });
+            }
         }
 
-    } else if(mealType === 'Dessert') {
-        const {_id, title, description, price, image} = await Dessert.find({ title:title });
-
-        if(_id && title && description && price && image) {
-            res.status(200).json({
-                id: _id,
-                title,
-                description,
-                price,
-                image
-            });
-        } else {
-            res.status(400).json({ error:"Meal not found!" });
-        }
-
-    } else if(mealType === 'Salad') {
-        const {_id, title, description, price, image} = await Salad.find({ title:title });
-
-        if(_id && title && description && price && image) {
-            res.status(200).json({
-                id: _id,
-                title,
-                description,
-                price,
-                image
-            });
-        } else {
-            res.status(400).json({ error:"Meal not found!" });
-        }
+    } catch (error) {
+        res.status(400).json({ error:"Meal not found!" });
     }
 }
 

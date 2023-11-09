@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser');
-//const { checkTokenInCookie } = require('./middlewares/checkLoggedMiddleware');
 const PORT = process.env.PORT || 3500;
 
 dotenv.config();
@@ -24,7 +23,8 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(cookieParser());
-//app.use(checkTokenInCookie);
+app.use('/public/uploads', express.static(path.join(__dirname, '..', 'public', 'uploads')));
+
 
 app.use('/',  require('./routes/pageRouters'));
 app.use('/signup', require('./routes/registerRouter'));
@@ -35,8 +35,15 @@ app.use('/user/delete', require('./routes/deleteUserRouter'));
 app.use('/addProducts', require('./routes/addProductRouter'));
 app.use('/product/update', require('./routes/updateProductRouter'));
 app.use('/product/delete', require('./routes/deleteProductRouter'));
+app.use('/addOrder', require('./routes/addOrderRouter'));
+app.use('/order/delete', require('./routes/deleteOrderRouter'));
 app.use('/', require('./routes/getOneProductRouter'));
 app.use('/', require('./routes/mePageRouter'));
+app.use('/', require('./routes/getMainCourseProductsRouter'));
+app.use('/', require('./routes/getDessertsProductsRouter'));
+app.use('/', require('./routes/getSaladsProductsRouter'));
+app.use('/', require('./routes/getAllUsers'));
+app.use('/', require('./routes/getOrdersRouter'));
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);

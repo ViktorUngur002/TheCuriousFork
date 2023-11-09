@@ -41,8 +41,8 @@ async function updateDisplay() {
     if(signInButton && usernameTitle && emailInput && phoneNumberInput && addressInput && addressNumberInput) {
         if(await isAuthenticated()) {
             signInButton.textContent = 'Profile';
-            signInButton.href = '/profile.html';
-            usernameTitle.textContent = userName;
+            signInButton.href = '/profile.html';  
+            usernameTitle.textContent = userName; 
             emailInput.value = email;
             phoneNumberInput.value = phoneNumber;
             addressInput.value = address;
